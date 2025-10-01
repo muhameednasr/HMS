@@ -27,29 +27,16 @@ namespace HMS
             InitializeComponent();
             DB.Load("Guest", dgv);
 
+    
             //Dictionary<string, string> dic = new Dictionary<string, string>();
             //dic.Add("ahmed", "2");
             //dic.Add("ramiz", "3");
             //dic.Add("sayed", "4");
 
-            //foreach (var item in dic)
-            //{
-            //  comboBox1.DataSource = dic[item].ToString();
-
-            //    comboBox1.DisplayMember = item.Key.ToString();
-            //    comboBox1.ValueMember = item.Value.ToString();
-            //}
-            Dictionary<string, string> dic = new Dictionary<string, string>();
-            dic.Add("ahmed", "2");
-            dic.Add("ramiz", "3");
-            dic.Add("sayed", "4");
-
-            comboBox1.DataSource = new BindingSource(dic, null);
-            foreach (var item in dic)
-            {
-                comboBox1.DisplayMember = item.Key.ToString();
-                comboBox1.ValueMember = item.Value.ToString();
-            }
+            //comboBox1.DataSource = new BindingSource(dic, null);
+            //    comboBox1.DisplayMember = "Key";   
+            //    comboBox1.ValueMember = "Value";  
+            
         }
 
         private void dvg_CellEndEdit(object sender, DataGridViewCellEventArgs e)
