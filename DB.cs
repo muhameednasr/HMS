@@ -11,7 +11,7 @@ namespace HMS
 {
     public static class DB
     {
-        public static readonly string ConnectionString = "data source=. ; initial catalog= HMS; integrated security = true;TrustServerCertificate =True";
+        public static readonly string ConnectionString = "data source=(localdb)\\MSSQLLocalDB ; initial catalog= HMS; integrated security = true;TrustServerCertificate =True";
         static SqlCommand cm;
 
 
