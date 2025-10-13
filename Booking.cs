@@ -16,7 +16,7 @@ namespace HMS
 
     {
         int selectedGuestID = -1;
-        int selectedRoomID = -1; // لتخزين الـ RoomID المختار
+        int selectedRoomID = -1; 
 
         private void LoadGuests()
         {
@@ -31,11 +31,7 @@ namespace HMS
 
             DataTable dt = DB.SelectCol("SELECT TOP 1 * FROM Guest ORDER BY GuestID DESC");
 
-            //if (dt.Rows.Count > 0)
-            //{
-            //    SelectedGuesttxt.Text = dt.Rows[0]["Fname"].ToString() + " " + dt.Rows[0]["Lname"].ToString();
-            //    selectedGuestID = Convert.ToInt32(dt.Rows[0]["GuestID"]);
-            //}
+            
         }
         private void SearchGuest(string name)
         {
@@ -53,13 +49,7 @@ namespace HMS
 
         private void AddGuestbtn_Click(object sender, EventArgs e)
         {
-            //var guestForm = new Guest();
-            //guestForm.FormClosed += (s, args) =>
-            //{
-            //    LoadGuests();
-            //    SelectLastAddedGuest();
-            //};
-            //guestForm.Show();
+           
         }
 
         private void Searchbtn_Click(object sender, EventArgs e)
@@ -86,12 +76,12 @@ namespace HMS
 
         private void dgvGuest_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // التأكد ان الضغط على صف مش رأس الجدول
+            if (e.RowIndex >= 0) 
             {
                 DataGridViewRow row = dgvGuest.Rows[e.RowIndex];
 
                 // تحديث الـ ID والاسم
-                selectedGuestID = Convert.ToInt32(row.Cells[0].Value); // أول عمود GuestID
+                selectedGuestID = Convert.ToInt32(row.Cells[0].Value); 
                 SelectGuestID.Text = selectedGuestID.ToString();
 
                 SelectedGuesttxt.Text = row.Cells[1].Value.ToString() + " " + row.Cells[2].Value.ToString(); // ثاني عمود الاسم الكامل
@@ -104,13 +94,13 @@ namespace HMS
         {
             LoadGuests();
             SelectLastAddedGuest();
-            LoadRoomTypes(); // تحميل أنواع الغرف في الـ ComboBox
-            LoadRoomTypesComboBox();   // تحميل كل الغرف في ComboBox مباشرة
+            LoadRoomTypes(); 
+            LoadRoomTypesComboBox();   
             LoadBookings();
             if (RoomTypecmb.Items.Count > 0)
             {
-                RoomTypecmb.SelectedIndex = 0; // اختار أول نوع غرفة تلقائي
-                LoadRooms(); // تحميل الغرف من النوع المختار
+                RoomTypecmb.SelectedIndex = 0;
+                LoadRooms(); 
 
             }
         }
@@ -124,7 +114,7 @@ namespace HMS
 
         List<int> selectedRoomIDs = new List<int>(); // تخزن كل الـ RoomID اللي اختارهم العميل
 
-        // لتخزين الـ RoomID لكل غرفة مختارة
+        
 
         // لتخزين RoomNumber كـ string لعرضها في TextBox
         private List<string> selectedRoomNumbers = new List<string>();
@@ -181,7 +171,7 @@ namespace HMS
 
             RoomTypecmb.DataSource = dt;
             RoomTypecmb.DisplayMember = "Name";
-            RoomTypecmb.ValueMember = "Name"; // نستخدم الاسم نفسه كقيمة
+            RoomTypecmb.ValueMember = "Name"; 
         }
 
 
@@ -198,8 +188,8 @@ namespace HMS
             {
                 DataGridViewRow row = dgvRoom.Rows[e.RowIndex];
 
-                int roomID = Convert.ToInt32(row.Cells[0].Value); // رقم الغرفة للحجز
-                string roomNumber = row.Cells[0].Value.ToString(); // لعرضه في TextBox
+                int roomID = Convert.ToInt32(row.Cells[0].Value); 
+                string roomNumber = row.Cells[0].Value.ToString(); 
 
                 // لو الغرفة موجودة مسبقًا → شيلها من القوائم
                 if (selectedRoomIDs.Contains(roomID))
@@ -273,7 +263,7 @@ namespace HMS
                 }
             }
 
-            TotalPricelbl.Text = $"إجمالي السعر: {total:C}"; // C = عملة محلية
+            TotalPricelbl.Text = $"إجمالي السعر: {total:C}"; 
         }
 
         private void ConfirmBookingbtn_Click(object sender, EventArgs e)
@@ -401,12 +391,10 @@ ORDER BY b.BookingID DESC
                     new Dictionary<string, object> { { "@RoomNumber", room } });
             }
 
-            // اختياري: تعملي علم داخلي في الفورم إن الحجز ملغي
-            // لو حابة تخفيه من DataGridView فوراً:
+         
             dgvBooking.Rows.Remove(dgvBooking.CurrentRow);
 
-            MessageBox.Show("تم إلغاء الحجز وإرجاع الغرف للعرض.");
-            //LoadBookings();  // هيرجع يظهر كل الحجوزات اللي ما اتلغتش (أو هتتحكمي بالفلتر)
+          
 
         }
 
@@ -414,7 +402,7 @@ ORDER BY b.BookingID DESC
         {
             if (dgvBooking.CurrentRow == null)
             {
-                MessageBox.Show("الرجاء اختيار حجز للتعديل.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please choose the right row .", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -427,7 +415,7 @@ ORDER BY b.BookingID DESC
             dtpChickin.Value = (DateTime)dgvBooking.CurrentRow.Cells["CheckinDate"].Value;
             dtpChickout.Value = (DateTime)dgvBooking.CurrentRow.Cells["CheckoutDate"].Value;
 
-            // تحميل الغرف المختارة (إذا عندك أكثر من غرفة)
+            // تحميل الغرف المختارة (لو عندي أكثر من غرفة)
             string roomNumbers = dgvBooking.CurrentRow.Cells["RoomNumber"].Value.ToString();
             selectedRoomNumbers = new List<string>(roomNumbers.Split(','));
             SelectedRoomtxt.Text = roomNumbers;
@@ -477,7 +465,7 @@ ORDER BY b.BookingID DESC
         {"@BookingID", bookingID}
     });
 
-            LoadBookings(); // تحديث dgvBooking فورًا
+            LoadBookings(); 
 
             MessageBox.Show("تم حفظ التعديلات بنجاح!", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
