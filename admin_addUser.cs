@@ -51,8 +51,7 @@ namespace HMS
             string password = addUser_password.Text.Trim();
             string role = addUser_role.SelectedItem?.ToString();
 
-            // افترضي إن StaffID بيتم اختياره من ComboBox أو بطريقة ما
-            int staffId = GetSelectedStaffID(); // لازم تعملي ميثود تجيب الـ StaffID
+            int staffId = GetSelectedStaffID(); 
 
             DB.Command("INSERT INTO Users (StaffID, Username, Password, Role) VALUES (@s, @u, @p, @r)",
                 new Dictionary<string, object>
