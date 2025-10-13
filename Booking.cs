@@ -59,7 +59,7 @@ namespace HMS
 
             if (string.IsNullOrEmpty(search))
             {
-                MessageBox.Show("الرجاء إدخال جزء من اسم العميل", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(" Please Enter the Guest name  ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -467,7 +467,7 @@ ORDER BY b.BookingID DESC
 
             LoadBookings(); 
 
-            MessageBox.Show("تم حفظ التعديلات بنجاح!", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Data Updated Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
