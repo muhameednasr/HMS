@@ -50,26 +50,25 @@ private void LoadRoomData()
         }
         private void LoadHotelCombo()
         {
-            DataTable dt = DB.Select("Hotel"); // 🏨 نجيب بيانات الفنادق
+            DataTable dt = DB.Select("Hotel"); //  هنجيب بيانات الفنادق
 
-            // عرض اسم الفندق للمستخدم — إرسال ID للـ SQL
+            
             DB.ComboBox(rooms_hotelCombo, dt, "HotelName", "HotelID");
 
-            rooms_hotelCombo.SelectedIndex = -1; // يبدأ فاضي
+            rooms_hotelCombo.SelectedIndex = -1; 
         }
 
 
-        // 🧭 تحميل نوع الغرفة في ComboBox
+        //  تحميل نوع الغرفة في ComboBox
         private void LoadRoomTypeCombo()
         {
-            DataTable dt = DB.Select("RoomType"); // 🏠 نجيب بيانات أنواع الغرف
+            DataTable dt = DB.Select("RoomType"); //  هجيب بيانات أنواع الغرف
 
-            // تغيير اسم العمود عشان الدالة DB.ComboBox تتعامل مع "ID" (لو كانت مكتوبة كده)
             dt.Columns["TypeID"].ColumnName = "ID";
 
             DB.ComboBox(rooms_type, dt, "Name", "ID");
 
-            rooms_type.SelectedIndex = -1; // يبدأ فاضي
+            rooms_type.SelectedIndex = -1; 
         }
 
 
@@ -183,22 +182,14 @@ private void LoadRoomData()
         rooms_roomPrice.Text = row.Cells["Price"].Value.ToString();
         rooms_status.Text = row.Cells["Status"].Value.ToString();
 
-        // لو عايزة ترجعي النوع حسب الاسم
+        // لو عايزة ارجع النوع حسب الاسم هيبقي 
         rooms_type.Text = row.Cells["RoomTypeName"].Value.ToString();
 
     }
 }
         private void admin_rooms_Load(object sender, EventArgs e)
         {
-            //    // 1️⃣ تحميل بيانات RoomType في DataTable
-            //    DataTable dtType = DB.Select("RoomType");
-
-            //    // 2️⃣ تأكد من وجود بيانات
-            //    MessageBox.Show("عدد الصفوف في RoomType: " + dtType.Rows.Count);
-
-            //    // 3️⃣ عرض أسماء الأعمدة للتأكد إنها صح
-            //    string cols = string.Join(", ", dtType.Columns.Cast<DataColumn>().Select(c => c.ColumnName));
-            //    MessageBox.Show("أسماء الأعمدة: " + cols);
+            
         }
     }
 }
