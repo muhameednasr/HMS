@@ -125,5 +125,17 @@ namespace HMS
         {
 
         }
+
+        private void guests_btn_Click(object sender, EventArgs e)
+        {
+            Guest guest = new Guest();
+            guest.Show();
+        }
+
+        private void Staff_Click(object sender, EventArgs e)
+        {
+            staff staff = new staff();
+            staff.Show();
+        }
     }
 }
