@@ -64,7 +64,7 @@ namespace HMS
 
 
 
-            if (role == "Manager"&& PassFromDb==password)
+            if (role == "Manager" && PassFromDb==password || role== "Receptionist" && PassFromDb == password)
             {
                 AdminMain adminForm = new AdminMain();
                 adminForm.Show();
