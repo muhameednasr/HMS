@@ -13,7 +13,7 @@ namespace HMS
 {
     public partial class Room : Form
     {
-       
+
         public Room()
         {
             InitializeComponent();
@@ -61,17 +61,22 @@ namespace HMS
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            
+
             DB.Command(
       "INSERT INTO Room (HotelID, TypeID, Status) VALUES (@hotelID, @typeID, @status)",
       new Dictionary<string, object>
               {
                            {"@hotelID", Convert.ToInt32(comboBoxHotel.SelectedValue)},
                            {"@typeID", Convert.ToInt32(comboBoxType.SelectedValue)},
-                           {"@status", txtStatus.Text}                 
+                           {"@status", txtStatus.Text}
           }
           );
             DB.Load("Room", dvg);
+
+        }
+
+        private void Room_Load(object sender, EventArgs e)
+        {
 
         }
     }
