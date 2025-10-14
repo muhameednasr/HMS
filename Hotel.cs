@@ -41,7 +41,7 @@ namespace HMS
         {
             var row = dgv.Rows[e.RowIndex];
 
-            var id = row.Cells["HotelId"].Value;       
+            var id = row.Cells["HotelId"].Value;
             var name = row.Cells["Name"].Value;
             var adress = row.Cells["Address"].Value;
             var phone = row.Cells["Phone"].Value;
@@ -60,6 +60,16 @@ namespace HMS
             {"@stars", stars}
                 }
             );
+        }
+
+        private void Hotel_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
