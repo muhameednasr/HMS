@@ -38,7 +38,7 @@
             guests_btn = new Button();
             addUser_btn = new Button();
             Staff = new Button();
-            label3 = new Label();
+            username = new Label();
             pictureBox1 = new PictureBox();
             panel3 = new Panel();
             panel4 = new Panel();
@@ -118,7 +118,7 @@
             panel2.Controls.Add(guests_btn);
             panel2.Controls.Add(addUser_btn);
             panel2.Controls.Add(Staff);
-            panel2.Controls.Add(label3);
+            panel2.Controls.Add(username);
             panel2.Controls.Add(pictureBox1);
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 34);
@@ -248,18 +248,18 @@
             Staff.UseVisualStyleBackColor = false;
             Staff.Click += Staff_Click;
             // 
-            // label3
+            // username
             // 
-            label3.AutoSize = true;
-            label3.Cursor = Cursors.Hand;
-            label3.FlatStyle = FlatStyle.Flat;
-            label3.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(60, 113);
-            label3.Name = "label3";
-            label3.Size = new Size(128, 18);
-            label3.TabIndex = 2;
-            label3.Text = "Welcome, User";
+            username.AutoSize = true;
+            username.Cursor = Cursors.Hand;
+            username.FlatStyle = FlatStyle.Flat;
+            username.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            username.ForeColor = Color.White;
+            username.Location = new Point(60, 113);
+            username.Name = "username";
+            username.Size = new Size(90, 18);
+            username.TabIndex = 2;
+            username.Text = "Welcome, ";
             // 
             // pictureBox1
             // 
@@ -530,7 +530,7 @@
         private Panel panel2;
         private PictureBox pictureBox1;
         private Button Staff;
-        private Label label3;
+        private Label username;
         private Button logout_btn;
         private Button rooms_btn;
         private Button guests_btn;

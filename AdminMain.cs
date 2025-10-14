@@ -18,6 +18,7 @@ namespace HMS
         public AdminMain()
         {
             InitializeComponent();
+            username.Text += $"{DB.user}";
         }
 
         private void label5_Click(object sender, EventArgs e)

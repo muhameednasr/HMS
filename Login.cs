@@ -61,6 +61,7 @@ namespace HMS
 
             string role = dt.Rows[0]["Role"].ToString();
             string PassFromDb = dt.Rows[0]["PasswordHash"].ToString();
+            DB.user = dt.Rows[0]["Username"].ToString();
 
 
 
