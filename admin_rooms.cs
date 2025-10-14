@@ -29,18 +29,18 @@ namespace HMS
         private void LoadRoomData()
         {
             string query = @"
-    SELECT 
-        R.Room AS RoomID,
-        R.HotelID,
-        R.Status,
-        R.TypeID,
-        RT.Name AS RoomTypeName,
-        RT.PricePerNight,
-    ISNULL(CONCAT(G.FirstName, ' ', G.LastName), 'Available') AS GuestName
-    FROM Room R
-    JOIN RoomType RT ON R.TypeID = RT.TypeID
-    LEFT JOIN  Booking B ON R.Room = B.RoomNumber
-    LEFT JOIN Guest G ON B.GuestID = G.GuestID";
+      SELECT 
+      R.RoomId AS RoomID,
+      R.HotelID,
+      R.Status,
+      R.TypeID,
+      RT.Name AS RoomTypeName,
+      RT.PricePerNight,
+  ISNULL(CONCAT(G.FirstName, ' ', G.LastName), 'Available') AS GuestName
+  FROM Room R
+  JOIN RoomType RT ON R.TypeID = RT.TypeID
+  LEFT JOIN  Booking B ON R.RoomId = B.RoomNumber
+  LEFT JOIN Guest G ON B.GuestID = G.GuestID";
 
             using (SqlConnection con = new SqlConnection(DB.ConnectionString))
             {

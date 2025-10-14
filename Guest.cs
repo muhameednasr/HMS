@@ -158,7 +158,7 @@ namespace HMS
 
                 //DB.ComboBox(cmbRoom, dtComboSource, "Display", "Value");
 
-                DataTable dtRoomNum = DB.SelectCol("select RoomId from Room r inner join Booking b on r.RoomId=b.RoomNumber where r.Status='Available';");
+                DataTable dtRoomNum = DB.SelectCol("select RoomId from Room r where r.Status='Available';");
 
                 DB.ComboBox(cmbRoom, dtRoomNum, "RoomId", "RoomId");
             }
@@ -180,7 +180,7 @@ namespace HMS
                 //");
                 //DB.DGVComboBox(dgv, "Room", dtRooms, "RoomNumber", "RoomNumber");
                 //((DataGridViewComboBoxColumn)dgv.Columns["room"]).DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton;
-                DataTable dtRoomNum = DB.SelectCol("select RoomId from Room r inner join Booking b on r.RoomId=b.RoomNumber where r.Status='Available';");
+                DataTable dtRoomNum = DB.SelectCol("select RoomId from Room r where r.Status='Available';");
                 DB.DGVComboBox(dgv, "Room", dtRoomNum, "RoomId", "RoomId");
 
             }
