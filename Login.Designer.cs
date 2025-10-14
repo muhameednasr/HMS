@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            login_registerbtn = new Button();
-            label6 = new Label();
             label5 = new Label();
             pictureBox1 = new PictureBox();
             Close = new Label();
@@ -48,8 +46,6 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(3, 14, 28);
-            panel1.Controls.Add(login_registerbtn);
-            panel1.Controls.Add(label6);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Left;
@@ -58,32 +54,6 @@
             panel1.Size = new Size(544, 653);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
-            // 
-            // login_registerbtn
-            // 
-            login_registerbtn.BackColor = Color.FromArgb(3, 14, 28);
-            login_registerbtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            login_registerbtn.ForeColor = SystemColors.Window;
-            login_registerbtn.Location = new Point(53, 575);
-            login_registerbtn.Name = "login_registerbtn";
-            login_registerbtn.Size = new Size(427, 50);
-            login_registerbtn.TabIndex = 8;
-            login_registerbtn.Text = "Register";
-            login_registerbtn.UseVisualStyleBackColor = false;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.FlatStyle = FlatStyle.Flat;
-            label6.Font = new Font("Yu Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(145, 506);
-            label6.Name = "label6";
-            label6.Size = new Size(167, 21);
-            label6.TabIndex = 9;
-            label6.Text = "Create New account";
-            label6.TextAlign = ContentAlignment.TopRight;
-            label6.Click += label6_Click;
             // 
             // label5
             // 
@@ -102,7 +72,7 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.download;
             pictureBox1.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox1.Location = new Point(145, 107);
+            pictureBox1.Location = new Point(122, 107);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(225, 197);
             pictureBox1.TabIndex = 0;
@@ -245,8 +215,6 @@
         private Button login_btn;
         private Label label4;
         private Label label5;
-        private Button login_registerbtn;
-        private Label label6;
         private CheckBox login_showpass;
     }
 }
