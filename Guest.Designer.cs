@@ -57,8 +57,8 @@
             panelButtons = new Panel();
             lblTitle = new Label();
             panelHeader = new Panel();
-            txtSearch = new TextBox();
             btnClearSearch = new Button();
+            txtSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             panel1.SuspendLayout();
             panelInputs.SuspendLayout();
@@ -516,16 +516,6 @@
             panelHeader.Size = new Size(1291, 70);
             panelHeader.TabIndex = 24;
             // 
-            // txtSearch
-            // 
-            txtSearch.Font = new Font("Segoe UI", 11F);
-            txtSearch.Location = new Point(248, 24);
-            txtSearch.Name = "txtSearch";
-            txtSearch.PlaceholderText = "Search by name, email, phone...";
-            txtSearch.Size = new Size(280, 32);
-            txtSearch.TabIndex = 1;
-            //txtSearch.TextChanged += txtSearch_TextChanged;
-            // 
             // btnClearSearch
             // 
             btnClearSearch.BackColor = Color.FromArgb(5, 20, 50);
@@ -539,7 +529,17 @@
             btnClearSearch.TabIndex = 7;
             btnClearSearch.Text = "✖";
             btnClearSearch.UseVisualStyleBackColor = false;
-            //btnClearSearch.Click += btnClearSearch_Click;
+            btnClearSearch.Click += btnClearSearch_Click;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Font = new Font("Segoe UI", 11F);
+            txtSearch.Location = new Point(248, 24);
+            txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderText = "Search by name, email, phone...";
+            txtSearch.Size = new Size(280, 32);
+            txtSearch.TabIndex = 1;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // Guest
             // 
