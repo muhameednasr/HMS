@@ -165,6 +165,7 @@
             login_password.Name = "login_password";
             login_password.Size = new Size(488, 27);
             login_password.TabIndex = 5;
+            login_password.UseSystemPasswordChar = true;
             // 
             // login_btn
             // 
@@ -204,6 +205,7 @@
             login_showpass.TabIndex = 10;
             login_showpass.Text = "Show Password";
             login_showpass.UseVisualStyleBackColor = true;
+            login_showpass.CheckedChanged += login_showpass_CheckedChanged;
             // 
             // Login
             // 
@@ -224,6 +226,7 @@
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            Load += Login_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
