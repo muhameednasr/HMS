@@ -55,7 +55,7 @@ namespace HMS
                 // افترضي إن الأعمدة في الداتا جريد اسمها كالتالي:
                 // RoomID, RoomType, HotelID, RoomStatus
 
-                bookRoom_roomID.Text = row.Cells["RoomID"].Value.ToString();
+                RoomId.Text = row.Cells["RoomID"].Value.ToString();
                 bookRoom_roomtype.Text = row.Cells["RoomTypeName"].Value.ToString();
                 bookRoom_hotelID.Text = row.Cells["HotelName"].Value.ToString();
                 bookRoom_roomStatus.Text = row.Cells["Status"].Value.ToString();
@@ -89,7 +89,7 @@ namespace HMS
             {
                             string query = @"
                 SELECT 
-                    R.Room As RoomID,
+                    R.RoomId As RoomID,
                     H.Name AS HotelName,
                     R.Status,
                     R.TypeID,
@@ -205,7 +205,7 @@ namespace HMS
         // Clear Button Method
         private void booking_clearbtn_Click(object sender, EventArgs e)
         {
-            bookRoom_roomID.Text = "__________";
+            RoomId.Text = "__________";
             bookRoom_roomtype.Text = "__________";
             bookRoom_hotelID.Text = "__________";
             bookRoom_roomStatus.Text = "__________";
@@ -221,7 +221,7 @@ namespace HMS
             try
             {
                 // التحقق إن كل البيانات الأساسية موجودة
-                if (string.IsNullOrEmpty(bookRoom_roomID.Text) ||
+                if (string.IsNullOrEmpty(RoomId.Text) ||
                     string.IsNullOrEmpty(txtDays.Text) ||
                     string.IsNullOrEmpty(bookRoom_roomPrice.Text))
                 {
@@ -236,8 +236,8 @@ namespace HMS
 
                 var parameters = new Dictionary<string, object>
                     {
-                        {"@GuestID", booking_guestName.Text},  // خلي اسم النزيل هنا
-                        {"@RoomNumber", bookRoom_roomID.Text},
+                        {"@GuestID", GuestId.Text},  // خلي اسم النزيل هنا
+                        {"@RoomNumber", RoomId.Text},
                         {"@CheckinDate", checkInPicker.Value},
                         {"@CheckoutDate", checkOutPicker.Value},
                         {"@TotalPrice", bookRoom_roomPrice.Text},
@@ -245,16 +245,16 @@ namespace HMS
                     };
 
                 DB.Command(query, parameters);
+                // تحديث حالة الغرفة
+                string updateRoom = "UPDATE Room SET Status = 'Occupied'  WHERE RoomId = @roomId";
+                DB.Command(updateRoom, new Dictionary<string, object>
+                    {
+                        { "@roomId", RoomId.Text },
+                        
+                    });
 
                 MessageBox.Show("The Room has been booked successfully",
                                "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // تحديث حالة الغرفة
-                string updateRoom = "UPDATE Room SET Status = 'Booked', GuestID = @GuestID WHERE RoomNumber = @RoomNumber";
-                DB.Command(updateRoom, new Dictionary<string, object>
-                    {
-                        { "@RoomNumber", bookRoom_roomID.Text },
-                        {"@GuestID", booking_guestName.Text},  // خلي اسم النزيل هنا
-                    });
 
 
 
@@ -277,7 +277,7 @@ namespace HMS
             Font font = new Font("Arial", 12);
             e.Graphics.DrawString("Hotel Booking Receipt", new Font("Arial", 16, FontStyle.Bold), Brushes.Black, 100, y);
             y += 40;
-            e.Graphics.DrawString($"Room ID: {bookRoom_roomID.Text}", font, Brushes.Black, 100, y);
+            e.Graphics.DrawString($"Room ID: {RoomId.Text}", font, Brushes.Black, 100, y);
             y += 25;
             e.Graphics.DrawString($"Room Type: {bookRoom_roomtype.Text}", font, Brushes.Black, 100, y);
             y += 25;
@@ -346,7 +346,7 @@ namespace HMS
             {
                 DataGridViewRow row = dgvGuests.Rows[e.RowIndex];
                 string guestName = row.Cells["GuestID"].Value.ToString();
-                booking_guestName.Text = guestName; // أو أي Label أو TextBox عندك
+                GuestId.Text = guestName; // أو أي Label أو TextBox عندك
             }
         }
     }

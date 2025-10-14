@@ -150,6 +150,7 @@
             Controls.Add(dvg);
             Name = "Room";
             Text = "Room";
+            Load += Room_Load;
             ((System.ComponentModel.ISupportInitialize)dvg).EndInit();
             ResumeLayout(false);
             PerformLayout();

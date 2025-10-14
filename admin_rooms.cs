@@ -148,12 +148,13 @@ namespace HMS
             }
 
             DB.Command
-("INSERT INTO Room (HotelID, TypeID, Status) VALUES (@hotel, @type, @status)",
+("INSERT INTO Room (RoomId,HotelID, TypeID, Status) VALUES (@roomId,@hotel, @type, @status)",
     new Dictionary<string, object>
     {
         {"@hotel", rooms_hotelCombo.SelectedValue},
         {"@type", rooms_type.SelectedValue},
-        {"@status", rooms_status.Text}
+        {"@status", rooms_status.Text},
+        {"@roomId", rooms_roomID.Text},
     }
 );
 

@@ -32,29 +32,30 @@
             label2 = new Label();
             Close = new Label();
             panel2 = new Panel();
+            Booking_btn = new Button();
             logout_btn = new Button();
             rooms_btn = new Button();
             guests_btn = new Button();
             addUser_btn = new Button();
-            dashboard_btn = new Button();
+            Staff = new Button();
             label3 = new Label();
             pictureBox1 = new PictureBox();
             panel3 = new Panel();
             panel4 = new Panel();
             panel9 = new Panel();
-            label10 = new Label();
+            TotalProfit = new Label();
             label11 = new Label();
             pictureBox5 = new PictureBox();
             panel8 = new Panel();
-            label8 = new Label();
+            TodaysProfit = new Label();
             label9 = new Label();
             pictureBox4 = new PictureBox();
             panel7 = new Panel();
-            label6 = new Label();
+            AvailableRooms = new Label();
             label7 = new Label();
             pictureBox3 = new PictureBox();
             panel6 = new Panel();
-            label4 = new Label();
+            TotalStaff = new Label();
             label5 = new Label();
             pictureBox2 = new PictureBox();
             panel5 = new Panel();
@@ -111,11 +112,12 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(52, 110, 138);
+            panel2.Controls.Add(Booking_btn);
             panel2.Controls.Add(logout_btn);
             panel2.Controls.Add(rooms_btn);
             panel2.Controls.Add(guests_btn);
             panel2.Controls.Add(addUser_btn);
-            panel2.Controls.Add(dashboard_btn);
+            panel2.Controls.Add(Staff);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(pictureBox1);
             panel2.Dock = DockStyle.Left;
@@ -125,6 +127,26 @@
             panel2.Size = new Size(257, 509);
             panel2.TabIndex = 2;
             panel2.Paint += panel2_Paint;
+            // 
+            // Booking_btn
+            // 
+            Booking_btn.BackColor = Color.FromArgb(52, 110, 138);
+            Booking_btn.Cursor = Cursors.Hand;
+            Booking_btn.FlatAppearance.BorderSize = 0;
+            Booking_btn.FlatAppearance.CheckedBackColor = Color.FromArgb(3, 14, 28);
+            Booking_btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(3, 14, 28);
+            Booking_btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(3, 14, 28);
+            Booking_btn.FlatStyle = FlatStyle.Flat;
+            Booking_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Booking_btn.ForeColor = Color.White;
+            Booking_btn.Location = new Point(32, 358);
+            Booking_btn.Margin = new Padding(3, 2, 3, 2);
+            Booking_btn.Name = "Booking_btn";
+            Booking_btn.Size = new Size(192, 29);
+            Booking_btn.TabIndex = 15;
+            Booking_btn.Text = "Booking";
+            Booking_btn.UseVisualStyleBackColor = false;
+            Booking_btn.Click += button1_Click;
             // 
             // logout_btn
             // 
@@ -156,7 +178,7 @@
             rooms_btn.FlatStyle = FlatStyle.Flat;
             rooms_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rooms_btn.ForeColor = Color.White;
-            rooms_btn.Location = new Point(32, 284);
+            rooms_btn.Location = new Point(32, 262);
             rooms_btn.Margin = new Padding(3, 2, 3, 2);
             rooms_btn.Name = "rooms_btn";
             rooms_btn.RightToLeft = RightToLeft.Yes;
@@ -177,7 +199,7 @@
             guests_btn.FlatStyle = FlatStyle.Flat;
             guests_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guests_btn.ForeColor = Color.White;
-            guests_btn.Location = new Point(32, 343);
+            guests_btn.Location = new Point(32, 312);
             guests_btn.Margin = new Padding(3, 2, 3, 2);
             guests_btn.Name = "guests_btn";
             guests_btn.Size = new Size(192, 29);
@@ -197,33 +219,34 @@
             addUser_btn.FlatStyle = FlatStyle.Flat;
             addUser_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             addUser_btn.ForeColor = Color.White;
-            addUser_btn.Location = new Point(32, 223);
+            addUser_btn.Location = new Point(32, 208);
             addUser_btn.Margin = new Padding(3, 2, 3, 2);
             addUser_btn.Name = "addUser_btn";
             addUser_btn.Size = new Size(192, 29);
             addUser_btn.TabIndex = 11;
             addUser_btn.Text = "Add User";
             addUser_btn.UseVisualStyleBackColor = false;
-            addUser_btn.Click += addUser_btn_Click;
+            addUser_btn.Click += Booking_btn_Click;
             // 
-            // dashboard_btn
+            // Staff
             // 
-            dashboard_btn.BackColor = Color.FromArgb(52, 110, 138);
-            dashboard_btn.Cursor = Cursors.Hand;
-            dashboard_btn.FlatAppearance.BorderSize = 0;
-            dashboard_btn.FlatAppearance.CheckedBackColor = Color.FromArgb(3, 14, 28);
-            dashboard_btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(3, 14, 28);
-            dashboard_btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(3, 14, 28);
-            dashboard_btn.FlatStyle = FlatStyle.Flat;
-            dashboard_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dashboard_btn.ForeColor = Color.White;
-            dashboard_btn.Location = new Point(32, 166);
-            dashboard_btn.Margin = new Padding(3, 2, 3, 2);
-            dashboard_btn.Name = "dashboard_btn";
-            dashboard_btn.Size = new Size(192, 29);
-            dashboard_btn.TabIndex = 10;
-            dashboard_btn.Text = "Dashboard";
-            dashboard_btn.UseVisualStyleBackColor = false;
+            Staff.BackColor = Color.FromArgb(52, 110, 138);
+            Staff.Cursor = Cursors.Hand;
+            Staff.FlatAppearance.BorderSize = 0;
+            Staff.FlatAppearance.CheckedBackColor = Color.FromArgb(3, 14, 28);
+            Staff.FlatAppearance.MouseDownBackColor = Color.FromArgb(3, 14, 28);
+            Staff.FlatAppearance.MouseOverBackColor = Color.FromArgb(3, 14, 28);
+            Staff.FlatStyle = FlatStyle.Flat;
+            Staff.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Staff.ForeColor = Color.White;
+            Staff.Location = new Point(32, 155);
+            Staff.Margin = new Padding(3, 2, 3, 2);
+            Staff.Name = "Staff";
+            Staff.Size = new Size(192, 29);
+            Staff.TabIndex = 10;
+            Staff.Text = "Staff";
+            Staff.UseVisualStyleBackColor = false;
+            Staff.Click += Staff_Click;
             // 
             // label3
             // 
@@ -232,7 +255,7 @@
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(51, 130);
+            label3.Location = new Point(60, 113);
             label3.Name = "label3";
             label3.Size = new Size(128, 18);
             label3.TabIndex = 2;
@@ -259,6 +282,7 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(1010, 509);
             panel3.TabIndex = 3;
+            panel3.Paint += panel3_Paint;
             // 
             // panel4
             // 
@@ -270,31 +294,31 @@
             panel4.Location = new Point(16, 8);
             panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(960, 143);
+            panel4.Size = new Size(970, 145);
             panel4.TabIndex = 4;
             // 
             // panel9
             // 
             panel9.BackColor = Color.FromArgb(52, 110, 138);
-            panel9.Controls.Add(label10);
+            panel9.Controls.Add(TotalProfit);
             panel9.Controls.Add(label11);
             panel9.Controls.Add(pictureBox5);
-            panel9.Location = new Point(725, 20);
+            panel9.Location = new Point(733, 20);
             panel9.Margin = new Padding(3, 2, 3, 2);
             panel9.Name = "panel9";
-            panel9.Size = new Size(220, 104);
+            panel9.Size = new Size(226, 104);
             panel9.TabIndex = 3;
             // 
-            // label10
+            // TotalProfit
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.ForeColor = Color.White;
-            label10.Location = new Point(158, 14);
-            label10.Name = "label10";
-            label10.Size = new Size(39, 16);
-            label10.TabIndex = 6;
-            label10.Text = "$ 0.0";
+            TotalProfit.AutoSize = true;
+            TotalProfit.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TotalProfit.ForeColor = Color.White;
+            TotalProfit.Location = new Point(143, 14);
+            TotalProfit.Name = "TotalProfit";
+            TotalProfit.Size = new Size(39, 16);
+            TotalProfit.TabIndex = 6;
+            TotalProfit.Text = "$ 0.0";
             // 
             // label11
             // 
@@ -321,25 +345,25 @@
             // panel8
             // 
             panel8.BackColor = Color.FromArgb(52, 110, 138);
-            panel8.Controls.Add(label8);
+            panel8.Controls.Add(TodaysProfit);
             panel8.Controls.Add(label9);
             panel8.Controls.Add(pictureBox4);
             panel8.Location = new Point(488, 20);
             panel8.Margin = new Padding(3, 2, 3, 2);
             panel8.Name = "panel8";
-            panel8.Size = new Size(220, 104);
+            panel8.Size = new Size(229, 104);
             panel8.TabIndex = 2;
             // 
-            // label8
+            // TodaysProfit
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(164, 14);
-            label8.Name = "label8";
-            label8.Size = new Size(39, 16);
-            label8.TabIndex = 5;
-            label8.Text = "$ 0.0";
+            TodaysProfit.AutoSize = true;
+            TodaysProfit.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TodaysProfit.ForeColor = Color.White;
+            TodaysProfit.Location = new Point(148, 14);
+            TodaysProfit.Name = "TodaysProfit";
+            TodaysProfit.Size = new Size(39, 16);
+            TodaysProfit.TabIndex = 5;
+            TodaysProfit.Text = "$ 0.0";
             // 
             // label9
             // 
@@ -366,25 +390,25 @@
             // panel7
             // 
             panel7.BackColor = Color.FromArgb(52, 110, 138);
-            panel7.Controls.Add(label6);
+            panel7.Controls.Add(AvailableRooms);
             panel7.Controls.Add(label7);
             panel7.Controls.Add(pictureBox3);
             panel7.Location = new Point(252, 20);
             panel7.Margin = new Padding(3, 2, 3, 2);
             panel7.Name = "panel7";
-            panel7.Size = new Size(220, 104);
+            panel7.Size = new Size(224, 104);
             panel7.TabIndex = 1;
             // 
-            // label6
+            // AvailableRooms
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(187, 14);
-            label6.Name = "label6";
-            label6.Size = new Size(15, 16);
-            label6.TabIndex = 5;
-            label6.Text = "0";
+            AvailableRooms.AutoSize = true;
+            AvailableRooms.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AvailableRooms.ForeColor = Color.White;
+            AvailableRooms.Location = new Point(187, 14);
+            AvailableRooms.Name = "AvailableRooms";
+            AvailableRooms.Size = new Size(15, 16);
+            AvailableRooms.TabIndex = 5;
+            AvailableRooms.Text = "0";
             // 
             // label7
             // 
@@ -411,7 +435,7 @@
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(52, 110, 138);
-            panel6.Controls.Add(label4);
+            panel6.Controls.Add(TotalStaff);
             panel6.Controls.Add(label5);
             panel6.Controls.Add(pictureBox2);
             panel6.Location = new Point(16, 20);
@@ -420,16 +444,17 @@
             panel6.Size = new Size(220, 104);
             panel6.TabIndex = 0;
             // 
-            // label4
+            // TotalStaff
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(192, 14);
-            label4.Name = "label4";
-            label4.Size = new Size(15, 16);
-            label4.TabIndex = 3;
-            label4.Text = "0";
+            TotalStaff.AutoSize = true;
+            TotalStaff.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TotalStaff.ForeColor = Color.White;
+            TotalStaff.Location = new Point(192, 14);
+            TotalStaff.Name = "TotalStaff";
+            TotalStaff.Size = new Size(15, 16);
+            TotalStaff.TabIndex = 3;
+            TotalStaff.Text = "0";
+            TotalStaff.Click += TotalStaff_Click;
             // 
             // label5
             // 
@@ -456,10 +481,10 @@
             // panel5
             // 
             panel5.BackColor = Color.White;
-            panel5.Location = new Point(16, 173);
+            panel5.Location = new Point(16, 169);
             panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(960, 318);
+            panel5.Size = new Size(970, 322);
             panel5.TabIndex = 5;
             // 
             // AdminMain
@@ -504,7 +529,7 @@
         private Label Close;
         private Panel panel2;
         private PictureBox pictureBox1;
-        private Button dashboard_btn;
+        private Button Staff;
         private Label label3;
         private Button logout_btn;
         private Button rooms_btn;
@@ -513,21 +538,22 @@
         private Panel panel3;
         private Panel panel4;
         private Panel panel9;
-        private Label label10;
+        private Label TotalProfit;
         private Label label11;
         private PictureBox pictureBox5;
         private Panel panel8;
-        private Label label8;
+        private Label TodaysProfit;
         private Label label9;
         private PictureBox pictureBox4;
         private Panel panel7;
-        private Label label6;
+        private Label AvailableRooms;
         private Label label7;
         private PictureBox pictureBox3;
         private Panel panel6;
-        private Label label4;
+        private Label TotalStaff;
         private Label label5;
         private PictureBox pictureBox2;
         private Panel panel5;
+        private Button Booking_btn;
     }
 }
