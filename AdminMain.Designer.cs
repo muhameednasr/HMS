@@ -32,6 +32,7 @@
             label2 = new Label();
             Close = new Label();
             panel2 = new Panel();
+            Booking_btn = new Button();
             logout_btn = new Button();
             rooms_btn = new Button();
             guests_btn = new Button();
@@ -42,19 +43,19 @@
             panel3 = new Panel();
             panel4 = new Panel();
             panel9 = new Panel();
-            label10 = new Label();
+            TotalProfit = new Label();
             label11 = new Label();
             pictureBox5 = new PictureBox();
             panel8 = new Panel();
-            label8 = new Label();
+            TodaysProfit = new Label();
             label9 = new Label();
             pictureBox4 = new PictureBox();
             panel7 = new Panel();
-            label6 = new Label();
+            AvailableRooms = new Label();
             label7 = new Label();
             pictureBox3 = new PictureBox();
             panel6 = new Panel();
-            label4 = new Label();
+            TotalStaff = new Label();
             label5 = new Label();
             pictureBox2 = new PictureBox();
             panel5 = new Panel();
@@ -80,9 +81,8 @@
             panel1.Controls.Add(Close);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1267, 34);
+            panel1.Size = new Size(1448, 46);
             panel1.TabIndex = 0;
             // 
             // label2
@@ -90,9 +90,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(10, 7);
+            label2.Location = new Point(12, 9);
             label2.Name = "label2";
-            label2.Size = new Size(220, 18);
+            label2.Size = new Size(270, 23);
             label2.TabIndex = 1;
             label2.Text = "Hotel Management System";
             // 
@@ -101,9 +101,9 @@
             Close.AutoSize = true;
             Close.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Close.ForeColor = Color.White;
-            Close.Location = new Point(1237, 7);
+            Close.Location = new Point(1414, 9);
             Close.Name = "Close";
-            Close.Size = new Size(18, 18);
+            Close.Size = new Size(22, 23);
             Close.TabIndex = 0;
             Close.Text = "X";
             Close.Click += Close_Click;
@@ -111,6 +111,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(52, 110, 138);
+            panel2.Controls.Add(Booking_btn);
             panel2.Controls.Add(logout_btn);
             panel2.Controls.Add(rooms_btn);
             panel2.Controls.Add(guests_btn);
@@ -119,12 +120,30 @@
             panel2.Controls.Add(label3);
             panel2.Controls.Add(pictureBox1);
             panel2.Dock = DockStyle.Left;
-            panel2.Location = new Point(0, 34);
-            panel2.Margin = new Padding(3, 2, 3, 2);
+            panel2.Location = new Point(0, 46);
             panel2.Name = "panel2";
-            panel2.Size = new Size(257, 509);
+            panel2.Size = new Size(294, 678);
             panel2.TabIndex = 2;
             panel2.Paint += panel2_Paint;
+            // 
+            // Booking_btn
+            // 
+            Booking_btn.BackColor = Color.FromArgb(52, 110, 138);
+            Booking_btn.Cursor = Cursors.Hand;
+            Booking_btn.FlatAppearance.BorderSize = 0;
+            Booking_btn.FlatAppearance.CheckedBackColor = Color.FromArgb(3, 14, 28);
+            Booking_btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(3, 14, 28);
+            Booking_btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(3, 14, 28);
+            Booking_btn.FlatStyle = FlatStyle.Flat;
+            Booking_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Booking_btn.ForeColor = Color.White;
+            Booking_btn.Location = new Point(36, 478);
+            Booking_btn.Name = "Booking_btn";
+            Booking_btn.Size = new Size(220, 39);
+            Booking_btn.TabIndex = 15;
+            Booking_btn.Text = "Booking";
+            Booking_btn.UseVisualStyleBackColor = false;
+            Booking_btn.Click += button1_Click;
             // 
             // logout_btn
             // 
@@ -136,10 +155,9 @@
             logout_btn.FlatStyle = FlatStyle.Flat;
             logout_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             logout_btn.ForeColor = Color.White;
-            logout_btn.Location = new Point(10, 462);
-            logout_btn.Margin = new Padding(3, 2, 3, 2);
+            logout_btn.Location = new Point(12, 616);
             logout_btn.Name = "logout_btn";
-            logout_btn.Size = new Size(236, 29);
+            logout_btn.Size = new Size(270, 39);
             logout_btn.TabIndex = 14;
             logout_btn.Text = "Logout";
             logout_btn.UseVisualStyleBackColor = false;
@@ -156,11 +174,10 @@
             rooms_btn.FlatStyle = FlatStyle.Flat;
             rooms_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rooms_btn.ForeColor = Color.White;
-            rooms_btn.Location = new Point(32, 284);
-            rooms_btn.Margin = new Padding(3, 2, 3, 2);
+            rooms_btn.Location = new Point(36, 349);
             rooms_btn.Name = "rooms_btn";
             rooms_btn.RightToLeft = RightToLeft.Yes;
-            rooms_btn.Size = new Size(192, 29);
+            rooms_btn.Size = new Size(220, 39);
             rooms_btn.TabIndex = 13;
             rooms_btn.Text = "Rooms";
             rooms_btn.UseVisualStyleBackColor = false;
@@ -177,14 +194,12 @@
             guests_btn.FlatStyle = FlatStyle.Flat;
             guests_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guests_btn.ForeColor = Color.White;
-            guests_btn.Location = new Point(32, 343);
-            guests_btn.Margin = new Padding(3, 2, 3, 2);
+            guests_btn.Location = new Point(36, 416);
             guests_btn.Name = "guests_btn";
-            guests_btn.Size = new Size(192, 29);
+            guests_btn.Size = new Size(220, 39);
             guests_btn.TabIndex = 12;
             guests_btn.Text = "Guests";
             guests_btn.UseVisualStyleBackColor = false;
-            guests_btn.Click += guests_btn_Click;
             // 
             // addUser_btn
             // 
@@ -197,14 +212,13 @@
             addUser_btn.FlatStyle = FlatStyle.Flat;
             addUser_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             addUser_btn.ForeColor = Color.White;
-            addUser_btn.Location = new Point(32, 223);
-            addUser_btn.Margin = new Padding(3, 2, 3, 2);
+            addUser_btn.Location = new Point(36, 278);
             addUser_btn.Name = "addUser_btn";
-            addUser_btn.Size = new Size(192, 29);
+            addUser_btn.Size = new Size(220, 39);
             addUser_btn.TabIndex = 11;
             addUser_btn.Text = "Add User";
             addUser_btn.UseVisualStyleBackColor = false;
-            addUser_btn.Click += addUser_btn_Click;
+            addUser_btn.Click += Booking_btn_Click;
             // 
             // dashboard_btn
             // 
@@ -217,10 +231,9 @@
             dashboard_btn.FlatStyle = FlatStyle.Flat;
             dashboard_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dashboard_btn.ForeColor = Color.White;
-            dashboard_btn.Location = new Point(32, 166);
-            dashboard_btn.Margin = new Padding(3, 2, 3, 2);
+            dashboard_btn.Location = new Point(36, 207);
             dashboard_btn.Name = "dashboard_btn";
-            dashboard_btn.Size = new Size(192, 29);
+            dashboard_btn.Size = new Size(220, 39);
             dashboard_btn.TabIndex = 10;
             dashboard_btn.Text = "Dashboard";
             dashboard_btn.UseVisualStyleBackColor = false;
@@ -232,9 +245,9 @@
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(51, 130);
+            label3.Location = new Point(69, 151);
             label3.Name = "label3";
-            label3.Size = new Size(128, 18);
+            label3.Size = new Size(158, 23);
             label3.TabIndex = 2;
             label3.Text = "Welcome, User";
             // 
@@ -242,10 +255,9 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.download;
             pictureBox1.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox1.Location = new Point(60, 16);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(69, 21);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(121, 85);
+            pictureBox1.Size = new Size(138, 113);
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
             // 
@@ -254,11 +266,11 @@
             panel3.Controls.Add(panel4);
             panel3.Controls.Add(panel5);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(257, 34);
-            panel3.Margin = new Padding(3, 2, 3, 2);
+            panel3.Location = new Point(294, 46);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1010, 509);
+            panel3.Size = new Size(1154, 678);
             panel3.TabIndex = 3;
+            panel3.Paint += panel3_Paint;
             // 
             // panel4
             // 
@@ -267,43 +279,41 @@
             panel4.Controls.Add(panel8);
             panel4.Controls.Add(panel7);
             panel4.Controls.Add(panel6);
-            panel4.Location = new Point(16, 8);
-            panel4.Margin = new Padding(3, 2, 3, 2);
+            panel4.Location = new Point(18, 10);
             panel4.Name = "panel4";
-            panel4.Size = new Size(960, 143);
+            panel4.Size = new Size(1109, 193);
             panel4.TabIndex = 4;
             // 
             // panel9
             // 
             panel9.BackColor = Color.FromArgb(52, 110, 138);
-            panel9.Controls.Add(label10);
+            panel9.Controls.Add(TotalProfit);
             panel9.Controls.Add(label11);
             panel9.Controls.Add(pictureBox5);
-            panel9.Location = new Point(725, 20);
-            panel9.Margin = new Padding(3, 2, 3, 2);
+            panel9.Location = new Point(838, 26);
             panel9.Name = "panel9";
-            panel9.Size = new Size(220, 104);
+            panel9.Size = new Size(258, 138);
             panel9.TabIndex = 3;
             // 
-            // label10
+            // TotalProfit
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.ForeColor = Color.White;
-            label10.Location = new Point(158, 14);
-            label10.Name = "label10";
-            label10.Size = new Size(39, 16);
-            label10.TabIndex = 6;
-            label10.Text = "$ 0.0";
+            TotalProfit.AutoSize = true;
+            TotalProfit.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TotalProfit.ForeColor = Color.White;
+            TotalProfit.Location = new Point(163, 18);
+            TotalProfit.Name = "TotalProfit";
+            TotalProfit.Size = new Size(48, 20);
+            TotalProfit.TabIndex = 6;
+            TotalProfit.Text = "$ 0.0";
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label11.ForeColor = Color.White;
-            label11.Location = new Point(38, 82);
+            label11.Location = new Point(43, 109);
             label11.Name = "label11";
-            label11.Size = new Size(82, 16);
+            label11.Size = new Size(100, 20);
             label11.TabIndex = 4;
             label11.Text = "Total Profit";
             // 
@@ -311,44 +321,42 @@
             // 
             pictureBox5.BackgroundImage = Properties.Resources.revenue_12983663;
             pictureBox5.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox5.Location = new Point(28, 23);
-            pictureBox5.Margin = new Padding(3, 2, 3, 2);
+            pictureBox5.Location = new Point(32, 31);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(66, 46);
+            pictureBox5.Size = new Size(75, 62);
             pictureBox5.TabIndex = 3;
             pictureBox5.TabStop = false;
             // 
             // panel8
             // 
             panel8.BackColor = Color.FromArgb(52, 110, 138);
-            panel8.Controls.Add(label8);
+            panel8.Controls.Add(TodaysProfit);
             panel8.Controls.Add(label9);
             panel8.Controls.Add(pictureBox4);
-            panel8.Location = new Point(488, 20);
-            panel8.Margin = new Padding(3, 2, 3, 2);
+            panel8.Location = new Point(558, 26);
             panel8.Name = "panel8";
-            panel8.Size = new Size(220, 104);
+            panel8.Size = new Size(262, 138);
             panel8.TabIndex = 2;
             // 
-            // label8
+            // TodaysProfit
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(164, 14);
-            label8.Name = "label8";
-            label8.Size = new Size(39, 16);
-            label8.TabIndex = 5;
-            label8.Text = "$ 0.0";
+            TodaysProfit.AutoSize = true;
+            TodaysProfit.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TodaysProfit.ForeColor = Color.White;
+            TodaysProfit.Location = new Point(169, 18);
+            TodaysProfit.Name = "TodaysProfit";
+            TodaysProfit.Size = new Size(48, 20);
+            TodaysProfit.TabIndex = 5;
+            TodaysProfit.Text = "$ 0.0";
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(22, 82);
+            label9.Location = new Point(25, 109);
             label9.Name = "label9";
-            label9.Size = new Size(101, 16);
+            label9.Size = new Size(122, 20);
             label9.TabIndex = 4;
             label9.Text = "Today's Profit";
             // 
@@ -356,44 +364,42 @@
             // 
             pictureBox4.BackgroundImage = Properties.Resources.profit_10851961;
             pictureBox4.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox4.Location = new Point(22, 23);
-            pictureBox4.Margin = new Padding(3, 2, 3, 2);
+            pictureBox4.Location = new Point(25, 31);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(63, 46);
+            pictureBox4.Size = new Size(72, 62);
             pictureBox4.TabIndex = 2;
             pictureBox4.TabStop = false;
             // 
             // panel7
             // 
             panel7.BackColor = Color.FromArgb(52, 110, 138);
-            panel7.Controls.Add(label6);
+            panel7.Controls.Add(AvailableRooms);
             panel7.Controls.Add(label7);
             panel7.Controls.Add(pictureBox3);
-            panel7.Location = new Point(252, 20);
-            panel7.Margin = new Padding(3, 2, 3, 2);
+            panel7.Location = new Point(288, 26);
             panel7.Name = "panel7";
-            panel7.Size = new Size(220, 104);
+            panel7.Size = new Size(256, 138);
             panel7.TabIndex = 1;
             // 
-            // label6
+            // AvailableRooms
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(187, 14);
-            label6.Name = "label6";
-            label6.Size = new Size(15, 16);
-            label6.TabIndex = 5;
-            label6.Text = "0";
+            AvailableRooms.AutoSize = true;
+            AvailableRooms.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AvailableRooms.ForeColor = Color.White;
+            AvailableRooms.Location = new Point(214, 18);
+            AvailableRooms.Name = "AvailableRooms";
+            AvailableRooms.Size = new Size(19, 20);
+            AvailableRooms.TabIndex = 5;
+            AvailableRooms.Text = "0";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(18, 82);
+            label7.Location = new Point(21, 109);
             label7.Name = "label7";
-            label7.Size = new Size(120, 16);
+            label7.Size = new Size(146, 20);
             label7.TabIndex = 4;
             label7.Text = "Available Rooms";
             // 
@@ -401,44 +407,43 @@
             // 
             pictureBox3.BackgroundImage = Properties.Resources.interior_design_12799889;
             pictureBox3.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox3.Location = new Point(18, 23);
-            pictureBox3.Margin = new Padding(3, 2, 3, 2);
+            pictureBox3.Location = new Point(21, 31);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(70, 52);
+            pictureBox3.Size = new Size(80, 69);
             pictureBox3.TabIndex = 1;
             pictureBox3.TabStop = false;
             // 
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(52, 110, 138);
-            panel6.Controls.Add(label4);
+            panel6.Controls.Add(TotalStaff);
             panel6.Controls.Add(label5);
             panel6.Controls.Add(pictureBox2);
-            panel6.Location = new Point(16, 20);
-            panel6.Margin = new Padding(3, 2, 3, 2);
+            panel6.Location = new Point(18, 26);
             panel6.Name = "panel6";
-            panel6.Size = new Size(220, 104);
+            panel6.Size = new Size(252, 138);
             panel6.TabIndex = 0;
             // 
-            // label4
+            // TotalStaff
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(192, 14);
-            label4.Name = "label4";
-            label4.Size = new Size(15, 16);
-            label4.TabIndex = 3;
-            label4.Text = "0";
+            TotalStaff.AutoSize = true;
+            TotalStaff.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TotalStaff.ForeColor = Color.White;
+            TotalStaff.Location = new Point(219, 18);
+            TotalStaff.Name = "TotalStaff";
+            TotalStaff.Size = new Size(19, 20);
+            TotalStaff.TabIndex = 3;
+            TotalStaff.Text = "0";
+            TotalStaff.Click += TotalStaff_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(14, 82);
+            label5.Location = new Point(16, 109);
             label5.Name = "label5";
-            label5.Size = new Size(77, 16);
+            label5.Size = new Size(94, 20);
             label5.TabIndex = 2;
             label5.Text = "Total Staff";
             // 
@@ -446,32 +451,29 @@
             // 
             pictureBox2.BackgroundImage = Properties.Resources.organizational_12128997;
             pictureBox2.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox2.Location = new Point(14, 23);
-            pictureBox2.Margin = new Padding(3, 2, 3, 2);
+            pictureBox2.Location = new Point(16, 31);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(80, 46);
+            pictureBox2.Size = new Size(91, 62);
             pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;
             // 
             // panel5
             // 
             panel5.BackColor = Color.White;
-            panel5.Location = new Point(16, 173);
-            panel5.Margin = new Padding(3, 2, 3, 2);
+            panel5.Location = new Point(18, 225);
             panel5.Name = "panel5";
-            panel5.Size = new Size(960, 318);
+            panel5.Size = new Size(1109, 430);
             panel5.TabIndex = 5;
             // 
             // AdminMain
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1267, 543);
+            ClientSize = new Size(1448, 724);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "AdminMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AdminDashboard";
@@ -513,21 +515,22 @@
         private Panel panel3;
         private Panel panel4;
         private Panel panel9;
-        private Label label10;
+        private Label TotalProfit;
         private Label label11;
         private PictureBox pictureBox5;
         private Panel panel8;
-        private Label label8;
+        private Label TodaysProfit;
         private Label label9;
         private PictureBox pictureBox4;
         private Panel panel7;
-        private Label label6;
+        private Label AvailableRooms;
         private Label label7;
         private PictureBox pictureBox3;
         private Panel panel6;
-        private Label label4;
+        private Label TotalStaff;
         private Label label5;
         private PictureBox pictureBox2;
         private Panel panel5;
+        private Button Booking_btn;
     }
 }
