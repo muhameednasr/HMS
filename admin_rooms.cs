@@ -58,24 +58,23 @@ namespace HMS
         {
             DataTable dt = DB.Select("Hotel"); //  نجيب بيانات الفنادق
 
-            // عرض اسم الفندق للمستخدم — إرسال ID للـ SQL
+            
             DB.ComboBox(rooms_hotelCombo, dt, "HotelName", "HotelID");
 
-            rooms_hotelCombo.SelectedIndex = -1;
+            rooms_hotelCombo.SelectedIndex = -1; // يبدأ فاضي
         }
 
 
-        // 🧭 تحميل نوع الغرفة في ComboBox
+        //  تحميل نوع الغرفة في ComboBox
         private void LoadRoomTypeCombo()
         {
-            DataTable dt = DB.Select("RoomType"); //  نجيب بيانات أنواع الغرف
+            DataTable dt = DB.Select("RoomType"); // 🏠 نجيب بيانات أنواع الغرف
 
-            // تغيير اسم العمود عشان الدالة DB.ComboBox تتعامل مع "ID" (لو كانت مكتوبة كده)
             dt.Columns["TypeID"].ColumnName = "ID";
 
             DB.ComboBox(rooms_type, dt, "Name", "ID");
 
-            rooms_type.SelectedIndex = -1;
+            rooms_type.SelectedIndex = -1; // يبدأ فاضي
         }
 
 
@@ -228,9 +227,32 @@ namespace HMS
             ClearForm();
         }
 
-        private void panel1_Paint_1(object sender, PaintEventArgs e)
-        {
+        private void dgvRooms_CellContentClick(object sender, DataGridViewCellEventArgs e)
+{
+    if (e.RowIndex >= 0 && dgvRooms.Rows[e.RowIndex].Cells["RoomID"].Value != null)
+    {
+        DataGridViewRow row = dgvRooms.Rows[e.RowIndex];
+        rooms_roomID.Text = row.Cells["RoomID"].Value.ToString();
+        rooms_hotelCombo.Text = row.Cells["HotelName"].Value.ToString();
+        rooms_roomPrice.Text = row.Cells["Price"].Value.ToString();
+        rooms_status.Text = row.Cells["Status"].Value.ToString();
 
+        // لو عايزة ترجعي النوع حسب الاسم
+        rooms_type.Text = row.Cells["RoomTypeName"].Value.ToString();
+
+    }
+}
+        private void admin_rooms_Load(object sender, EventArgs e)
+        {
+            //    // 1️⃣ تحميل بيانات RoomType في DataTable
+            //    DataTable dtType = DB.Select("RoomType");
+
+            //    // 2️⃣ تأكد من وجود بيانات
+            //    MessageBox.Show("عدد الصفوف في RoomType: " + dtType.Rows.Count);
+
+            //    // 3️⃣ عرض أسماء الأعمدة للتأكد إنها صح
+            //    string cols = string.Join(", ", dtType.Columns.Cast<DataColumn>().Select(c => c.ColumnName));
+            //    MessageBox.Show("أسماء الأعمدة: " + cols);
         }
     }
 }

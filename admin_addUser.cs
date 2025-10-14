@@ -42,7 +42,7 @@ namespace HMS
             if (addUser_role.SelectedValue != null)
                 return Convert.ToInt32(addUser_role.SelectedValue);
             else
-                throw new Exception("يجب اختيار موظف");
+                throw new Exception("Must choose User");
         }
 
 
