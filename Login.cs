@@ -45,9 +45,9 @@ namespace HMS
         private void login_btn_Click(object sender, EventArgs e)
         {
 
-            string email = login_username.Text.Trim().Replace("'", "''");
+            string userName = login_username.Text.Trim().Replace("'", "''");
 
-            DataTable dt = DB.SelectCol($"SELECT * FROM Staff WHERE Email = '{email}'");
+            DataTable dt = DB.SelectCol($"SELECT * FROM Users WHERE Username = '{userName}'");
 
 
             string password = txtPassword.Text.Trim();
@@ -59,12 +59,12 @@ namespace HMS
                 return;
             }
 
-            string role = dt.Rows[0]["Position"].ToString();
-            string PassFromDb = dt.Rows[0]["Password"].ToString();
+            string role = dt.Rows[0]["Role"].ToString();
+            string PassFromDb = dt.Rows[0]["PasswordHash"].ToString();
 
 
 
-            if (role == "Manager" && PassFromDb==password || role== "Receptionist" && PassFromDb == password)
+            if (role == "Admin" && PassFromDb==password || role== "Receptionist" && PassFromDb == password)
             {
                 AdminMain adminForm = new AdminMain();
                 adminForm.Show();
