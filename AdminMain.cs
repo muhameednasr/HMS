@@ -64,5 +64,11 @@ namespace HMS
             admin_rooms rooms = new admin_rooms();
             rooms.Show();
         }
+
+        private void guests_btn_Click(object sender, EventArgs e)
+        {
+            Guest guest = new Guest();
+            guest.Show();
+        }
     }
 }

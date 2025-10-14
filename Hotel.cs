@@ -19,7 +19,7 @@ namespace HMS
             //    }
             //    );
 
-            DB.Load("Hotel", dvg);
+            DB.Load("Hotel", dgv);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace HMS
 
         private void dvg_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            var row = dvg.Rows[e.RowIndex];
+            var row = dgv.Rows[e.RowIndex];
 
             var id = row.Cells["HotelId"].Value;       
             var name = row.Cells["Name"].Value;

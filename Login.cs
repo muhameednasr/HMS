@@ -49,27 +49,32 @@ namespace HMS
 
             DataTable dt = DB.SelectCol($"SELECT * FROM Staff WHERE Email = '{email}'");
 
+
+            string password = txtPassword.Text.Trim();
+
+
             if (dt.Rows.Count == 0)
             {
-                MessageBox.Show("الإيميل غير موجود");
+                MessageBox.Show("there is no emails found");
                 return;
             }
 
             string role = dt.Rows[0]["Position"].ToString();
+            string PassFromDb = dt.Rows[0]["Password"].ToString();
 
 
 
-            if (role == "Admin")
+            if (role == "Manager"&& PassFromDb==password)
             {
                 AdminMain adminForm = new AdminMain();
                 adminForm.Show();
                 this.Hide();
             }
-            //else
-            //{
-            //    UserDashboard userForm = new UserDashboard();
-            //    userForm.Show();
-            //}
+            else
+            {
+                MessageBox.Show("password or email is not correct");
+                return;
+            }
 
 
 

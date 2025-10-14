@@ -138,25 +138,29 @@ namespace HMS
         {
             try
             {
-                string query = "SELECT Room as RoomNumber FROM Room WHERE Status = 'Available'";
-                if (_currentRoomNumber != null)
-                {
-                    query += $" OR Room = {_currentRoomNumber}";
-                }
-                DataTable dtRoomsFromDb = DB.SelectCol(query);
+                //string query = "SELECT Room as RoomNumber FROM Room WHERE Status = 'Available'";
+                //if (_currentRoomNumber != null)
+                //{
+                //    query += $" OR Room = {_currentRoomNumber}";
+                //}
+                //DataTable dtRoomsFromDb = DB.SelectCol(query);
 
-                DataTable dtComboSource = new DataTable();
-                dtComboSource.Columns.Add("Value", typeof(int));
-                dtComboSource.Columns.Add("Display", typeof(string));
+                //DataTable dtComboSource = new DataTable();
+                //dtComboSource.Columns.Add("Value", typeof(int));
+                //dtComboSource.Columns.Add("Display", typeof(string));
 
-                dtComboSource.Rows.Add(-1, "select a room");
+                //dtComboSource.Rows.Add(-1, "select a room");
 
-                foreach (DataRow dr in dtRoomsFromDb.Rows)
-                {
-                    dtComboSource.Rows.Add(dr["RoomNumber"], dr["RoomNumber"].ToString());
-                }
+                //foreach (DataRow dr in dtRoomsFromDb.Rows)
+                //{
+                //    dtComboSource.Rows.Add(dr["RoomNumber"], dr["RoomNumber"].ToString());
+                //}
 
-                DB.ComboBox(cmbRoom, dtComboSource, "Display", "Value");
+                //DB.ComboBox(cmbRoom, dtComboSource, "Display", "Value");
+
+                DataTable dtRoomNum = DB.SelectCol("select RoomId from Room r inner join Booking b on r.RoomId=b.RoomNumber where r.Status='Available';");
+
+                DB.ComboBox(cmbRoom, dtRoomNum, "RoomId", "RoomId");
             }
             catch (Exception ex)
             {
@@ -168,14 +172,17 @@ namespace HMS
         {
             try
             {
-                DataTable dtRooms = DB.SelectCol(@"
-                    SELECT DISTINCT Room as RoomNumber 
-                    FROM Room 
-                    WHERE Status = 'Available' 
-                    OR Room IN (SELECT RoomNumber FROM Booking WHERE GuestID IN (SELECT GuestID FROM Guest))
-                ");
-                DB.DGVComboBox(dgv, "room", dtRooms, "RoomNumber", "RoomNumber");
-                ((DataGridViewComboBoxColumn)dgv.Columns["room"]).DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton;
+                //DataTable dtRooms = DB.SelectCol(@"
+                //    SELECT DISTINCT Room as RoomNumber 
+                //    FROM Room 
+                //    WHERE Status = 'Available' 
+                //    OR Room IN (SELECT RoomNumber FROM Booking WHERE GuestID IN (SELECT GuestID FROM Guest))
+                //");
+                //DB.DGVComboBox(dgv, "Room", dtRooms, "RoomNumber", "RoomNumber");
+                //((DataGridViewComboBoxColumn)dgv.Columns["room"]).DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton;
+                DataTable dtRoomNum = DB.SelectCol("select RoomId from Room r inner join Booking b on r.RoomId=b.RoomNumber where r.Status='Available';");
+                DB.DGVComboBox(dgv, "Room", dtRoomNum, "RoomId", "RoomId");
+
             }
             catch (Exception ex)
             {

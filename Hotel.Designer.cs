@@ -28,7 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dvg = new DataGridView();
+            dgv = new DataGridView();
+            HotelId = new DataGridViewTextBoxColumn();
+            Name = new DataGridViewTextBoxColumn();
+            Address = new DataGridViewTextBoxColumn();
+            Phone = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            Stars = new DataGridViewTextBoxColumn();
             btnAdd = new Button();
             txtEmail = new TextBox();
             txtAdress = new TextBox();
@@ -40,25 +46,50 @@
             label4 = new Label();
             label5 = new Label();
             txtPhone = new TextBox();
-            HotelId = new DataGridViewTextBoxColumn();
-            Name = new DataGridViewTextBoxColumn();
-            Address = new DataGridViewTextBoxColumn();
-            Phone = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
-            Stars = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)dvg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             SuspendLayout();
             // 
-            // dvg
+            // dgv
             // 
-            dvg.BackgroundColor = Color.Thistle;
-            dvg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dvg.Columns.AddRange(new DataGridViewColumn[] { HotelId, Name, Address, Phone, Email, Stars });
-            dvg.Location = new Point(12, 26);
-            dvg.Name = "dvg";
-            dvg.Size = new Size(644, 368);
-            dvg.TabIndex = 0;
-            dvg.CellEndEdit += dvg_CellEndEdit;
+            dgv.BackgroundColor = Color.Thistle;
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv.Columns.AddRange(new DataGridViewColumn[] { HotelId, Name, Address, Phone, Email, Stars });
+            dgv.Location = new Point(12, 26);
+            dgv.Name = "dgv";
+            dgv.Size = new Size(644, 368);
+            dgv.TabIndex = 0;
+            dgv.CellEndEdit += dvg_CellEndEdit;
+            // 
+            // HotelId
+            // 
+            HotelId.HeaderText = "Id";
+            HotelId.Name = "HotelId";
+            HotelId.ReadOnly = true;
+            // 
+            // Name
+            // 
+            Name.HeaderText = "Hotel";
+            Name.Name = "Name";
+            // 
+            // Address
+            // 
+            Address.HeaderText = "Address";
+            Address.Name = "Address";
+            // 
+            // Phone
+            // 
+            Phone.HeaderText = "Phone";
+            Phone.Name = "Phone";
+            // 
+            // Email
+            // 
+            Email.HeaderText = "Email";
+            Email.Name = "Email";
+            // 
+            // Stars
+            // 
+            Stars.HeaderText = "Stars";
+            Stars.Name = "Stars";
             // 
             // btnAdd
             // 
@@ -145,38 +176,7 @@
             txtPhone.Size = new Size(186, 23);
             txtPhone.TabIndex = 11;
             // 
-            // HotelId
-            // 
-            HotelId.HeaderText = "Id";
-            HotelId.Name = "HotelId";
-            HotelId.ReadOnly = true;
-            // 
-            // Name
-            // 
-            Name.HeaderText = "Hotel";
-            Name.Name = "Name";
-            // 
-            // Address
-            // 
-            Address.HeaderText = "Address";
-            Address.Name = "Address";
-            // 
-            // Phone
-            // 
-            Phone.HeaderText = "Phone";
-            Phone.Name = "Phone";
-            // 
-            // Email
-            // 
-            Email.HeaderText = "Email";
-            Email.Name = "Email";
-            // 
-            // Stars
-            // 
-            Stars.HeaderText = "Stars";
-            Stars.Name = "Stars";
-            // 
-            // Form1
+            // Hotel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -192,16 +192,16 @@
             Controls.Add(txtEmail);
             Controls.Add(txtStars);
             Controls.Add(btnAdd);
-            Controls.Add(dvg);
+            Controls.Add(dgv);
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)dvg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dvg;
+        private DataGridView dgv;
         private Button btnAdd;
         private TextBox txtEmail;
         private TextBox txtAdress;
