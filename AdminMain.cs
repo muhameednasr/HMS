@@ -21,7 +21,11 @@ namespace HMS
             username.Text += $"{DB.user}";
             if(DB.role== "Receptionist")
             {
-                addUser_btn.Visible = false;   
+                addUser_btn.Visible = false;
+            }
+            else
+            {
+                addUser_btn.Visible = true;
             }
         }
 
