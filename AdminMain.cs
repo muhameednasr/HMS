@@ -19,7 +19,7 @@ namespace HMS
         {
             InitializeComponent();
             username.Text += $"{DB.user}";
-            if (DB.role == "Receptionist  ")
+            if (DB.role == "Receptionist")
             {
                 addUser_btn.Visible = false;
             }

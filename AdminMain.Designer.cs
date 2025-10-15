@@ -32,6 +32,7 @@
             label2 = new Label();
             Close = new Label();
             panel2 = new Panel();
+            btnHotel = new Button();
             Booking_btn = new Button();
             logout_btn = new Button();
             rooms_btn = new Button();
@@ -59,7 +60,6 @@
             label5 = new Label();
             pictureBox2 = new PictureBox();
             panel5 = new Panel();
-            btnHotel = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -130,6 +130,26 @@
             panel2.TabIndex = 2;
             panel2.Paint += panel2_Paint;
             // 
+            // btnHotel
+            // 
+            btnHotel.BackColor = Color.FromArgb(52, 110, 138);
+            btnHotel.Cursor = Cursors.Hand;
+            btnHotel.FlatAppearance.BorderSize = 0;
+            btnHotel.FlatAppearance.CheckedBackColor = Color.FromArgb(3, 14, 28);
+            btnHotel.FlatAppearance.MouseDownBackColor = Color.FromArgb(3, 14, 28);
+            btnHotel.FlatAppearance.MouseOverBackColor = Color.FromArgb(3, 14, 28);
+            btnHotel.FlatStyle = FlatStyle.Flat;
+            btnHotel.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnHotel.ForeColor = Color.White;
+            btnHotel.Location = new Point(32, 169);
+            btnHotel.Margin = new Padding(3, 2, 3, 2);
+            btnHotel.Name = "btnHotel";
+            btnHotel.Size = new Size(192, 29);
+            btnHotel.TabIndex = 16;
+            btnHotel.Text = "Hotel";
+            btnHotel.UseVisualStyleBackColor = false;
+            btnHotel.Click += btnHotel_Click;
+            // 
             // Booking_btn
             // 
             Booking_btn.BackColor = Color.FromArgb(52, 110, 138);
@@ -141,7 +161,7 @@
             Booking_btn.FlatStyle = FlatStyle.Flat;
             Booking_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Booking_btn.ForeColor = Color.White;
-            Booking_btn.Location = new Point(32, 407);
+            Booking_btn.Location = new Point(32, 357);
             Booking_btn.Margin = new Padding(3, 2, 3, 2);
             Booking_btn.Name = "Booking_btn";
             Booking_btn.Size = new Size(192, 29);
@@ -221,7 +241,7 @@
             addUser_btn.FlatStyle = FlatStyle.Flat;
             addUser_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             addUser_btn.ForeColor = Color.White;
-            addUser_btn.Location = new Point(32, 361);
+            addUser_btn.Location = new Point(32, 409);
             addUser_btn.Margin = new Padding(3, 2, 3, 2);
             addUser_btn.Name = "addUser_btn";
             addUser_btn.Size = new Size(192, 29);
@@ -488,26 +508,6 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(970, 322);
             panel5.TabIndex = 5;
-            // 
-            // btnHotel
-            // 
-            btnHotel.BackColor = Color.FromArgb(52, 110, 138);
-            btnHotel.Cursor = Cursors.Hand;
-            btnHotel.FlatAppearance.BorderSize = 0;
-            btnHotel.FlatAppearance.CheckedBackColor = Color.FromArgb(3, 14, 28);
-            btnHotel.FlatAppearance.MouseDownBackColor = Color.FromArgb(3, 14, 28);
-            btnHotel.FlatAppearance.MouseOverBackColor = Color.FromArgb(3, 14, 28);
-            btnHotel.FlatStyle = FlatStyle.Flat;
-            btnHotel.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnHotel.ForeColor = Color.White;
-            btnHotel.Location = new Point(32, 169);
-            btnHotel.Margin = new Padding(3, 2, 3, 2);
-            btnHotel.Name = "btnHotel";
-            btnHotel.Size = new Size(192, 29);
-            btnHotel.TabIndex = 16;
-            btnHotel.Text = "Hotel";
-            btnHotel.UseVisualStyleBackColor = false;
-            btnHotel.Click += btnHotel_Click;
             // 
             // AdminMain
             // 
