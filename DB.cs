@@ -14,6 +14,7 @@ namespace HMS
         public static readonly string ConnectionString = "data source=. ; initial catalog= HMS; integrated security = true;TrustServerCertificate =True";
         static SqlCommand cm;
         public static string user;
+        public static string role;
 
 
         /*

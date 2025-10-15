@@ -19,6 +19,10 @@ namespace HMS
         {
             InitializeComponent();
             username.Text += $"{DB.user}";
+            if(DB.role== "Receptionist")
+            {
+                addUser_btn.Visible = false;   
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)
