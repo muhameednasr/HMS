@@ -19,7 +19,7 @@ namespace HMS
         {
             InitializeComponent();
             username.Text += $"{DB.user}";
-            if(DB.role== "Receptionist")
+            if (DB.role == "Receptionist  ")
             {
                 addUser_btn.Visible = false;
             }
@@ -145,6 +145,12 @@ namespace HMS
         {
             staff staff = new staff();
             staff.Show();
+        }
+
+        private void btnHotel_Click(object sender, EventArgs e)
+        {
+            Hotel hotel = new Hotel();
+            hotel.Show();
         }
     }
 }
