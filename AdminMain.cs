@@ -18,13 +18,15 @@ namespace HMS
         public AdminMain()
         {
             InitializeComponent();
-            username.Text += $"{DB.user}";
+            username.Text += $"'{DB.user}'";
             if (DB.role == "Receptionist")
             {
                 addUser_btn.Visible = false;
+                btnHotel.Visible = false;
             }
             else
             {
+                btnHotel.Visible=true;
                 addUser_btn.Visible = true;
             }
         }
@@ -46,7 +48,7 @@ namespace HMS
 
         private void Close_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to exite?", "confirmation Message"
+            if (MessageBox.Show("Are you sure you want to exit?", "confirmation Message"
                 , MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Login login = new Login();

@@ -11,7 +11,7 @@ namespace HMS
 {
     public static class DB
     {
-        public static readonly string ConnectionString = "data source=DESKTOP-SRP0SS9\\SQLEXPRESS ; initial catalog= HMS; integrated security = true;TrustServerCertificate =True";
+        public static readonly string ConnectionString = "data source=. ; initial catalog= HMS; integrated security = true;TrustServerCertificate =True";
         static SqlCommand cm;
         public static string user;
         public static string role;

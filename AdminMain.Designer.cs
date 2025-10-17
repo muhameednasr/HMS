@@ -299,11 +299,11 @@
             username.FlatStyle = FlatStyle.Flat;
             username.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             username.ForeColor = Color.White;
-            username.Location = new Point(83, 114);
+            username.Location = new Point(60, 114);
             username.Name = "username";
-            username.Size = new Size(81, 18);
+            username.Size = new Size(86, 18);
             username.TabIndex = 2;
-            username.Text = "Welcome";
+            username.Text = "Welcome,";
             // 
             // pictureBox1
             // 
