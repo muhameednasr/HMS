@@ -64,7 +64,7 @@
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1122, 37);
+            panel4.Size = new Size(1134, 50);
             panel4.TabIndex = 13;
             // 
             // label7
@@ -82,13 +82,13 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.White;
             label4.Location = new Point(469, 10);
             label4.Name = "label4";
-            label4.Size = new Size(109, 18);
+            label4.Size = new Size(152, 22);
             label4.TabIndex = 12;
-            label4.Text = "Room's Data";
+            label4.Text = "🏨 Room's Data";
             // 
             // panel1
             // 
@@ -96,10 +96,10 @@
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(dgvRooms);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 37);
+            panel1.Location = new Point(0, 50);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1122, 517);
+            panel1.Size = new Size(1134, 540);
             panel1.TabIndex = 14;
             // 
             // panel2
@@ -311,7 +311,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1122, 554);
+            ClientSize = new Size(1134, 590);
             Controls.Add(panel1);
             Controls.Add(panel4);
             FormBorderStyle = FormBorderStyle.None;

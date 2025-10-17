@@ -16,6 +16,8 @@ namespace HMS
         {
             InitializeComponent();
             LoadUsers();
+            LoadHotels();
+            LoadStaff();
         }
         // Load Users into DataGridView//
         private void LoadUsers()
@@ -54,11 +56,50 @@ namespace HMS
             this.Close();
         }
 
+        private void LoadHotels()
+        {
+            try
+            {
+                DataTable dtHotels = DB.Select("Hotel");
+                if (dtHotels.Rows.Count > 0)
+                {
+                    DB.ComboBox(addUser_hotelID, dtHotels, "HotelName", "HotelID");
+
+                    addUser_hotelID.SelectedIndex = -1;
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading hotels: " + ex.Message);
+            }
+        }
+        private void LoadStaff()
+        {
+            try
+            {
+                DataTable dtStaff = DB.SelectCol("SELECT StaffID, (FirstName + ' ' + LastName) AS FullName FROM Staff");
+                if (dtStaff.Rows.Count > 0)
+                {
+                    DB.ComboBox(addUser_staffID, dtStaff, "FullName", "StaffID");
+
+                 
+                    addUser_staffID.SelectedIndex = -1;
+                    addUser_staffID.Text = " ";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading staff: " + ex.Message);
+            }
+        }
+
+
         // Add Button Click Event//
         private void addUser_addbtn_Click_1(object sender, EventArgs e)
         {
             string username = addUser_username.Text.Trim();
-            string password = addUser_password.Text.Trim(); // يفضل تشفريها قبل الحفظ لاحقاً
+            string password = addUser_password.Text.Trim(); 
             string role = addUser_role.Text;
             if (!int.TryParse(addUser_hotelID.Text, out int hotelId))
             {

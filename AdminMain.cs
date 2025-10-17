@@ -152,5 +152,11 @@ namespace HMS
             Hotel hotel = new Hotel();
             hotel.Show();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Booking_view booking_View = new Booking_view();
+            booking_View.Show();
+        }
     }
 }

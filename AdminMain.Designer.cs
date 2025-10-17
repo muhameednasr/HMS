@@ -32,6 +32,7 @@
             label2 = new Label();
             Close = new Label();
             panel2 = new Panel();
+            button1 = new Button();
             btnHotel = new Button();
             Booking_btn = new Button();
             logout_btn = new Button();
@@ -113,6 +114,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(52, 110, 138);
+            panel2.Controls.Add(button1);
             panel2.Controls.Add(btnHotel);
             panel2.Controls.Add(Booking_btn);
             panel2.Controls.Add(logout_btn);
@@ -130,6 +132,26 @@
             panel2.TabIndex = 2;
             panel2.Paint += panel2_Paint;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(52, 110, 138);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.CheckedBackColor = Color.FromArgb(3, 14, 28);
+            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(3, 14, 28);
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(3, 14, 28);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(32, 376);
+            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(192, 29);
+            button1.TabIndex = 17;
+            button1.Text = "Booking Details";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
+            // 
             // btnHotel
             // 
             btnHotel.BackColor = Color.FromArgb(52, 110, 138);
@@ -141,7 +163,7 @@
             btnHotel.FlatStyle = FlatStyle.Flat;
             btnHotel.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnHotel.ForeColor = Color.White;
-            btnHotel.Location = new Point(32, 169);
+            btnHotel.Location = new Point(32, 151);
             btnHotel.Margin = new Padding(3, 2, 3, 2);
             btnHotel.Name = "btnHotel";
             btnHotel.Size = new Size(192, 29);
@@ -161,7 +183,7 @@
             Booking_btn.FlatStyle = FlatStyle.Flat;
             Booking_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Booking_btn.ForeColor = Color.White;
-            Booking_btn.Location = new Point(32, 357);
+            Booking_btn.Location = new Point(32, 339);
             Booking_btn.Margin = new Padding(3, 2, 3, 2);
             Booking_btn.Name = "Booking_btn";
             Booking_btn.Size = new Size(192, 29);
@@ -200,7 +222,7 @@
             rooms_btn.FlatStyle = FlatStyle.Flat;
             rooms_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rooms_btn.ForeColor = Color.White;
-            rooms_btn.Location = new Point(32, 262);
+            rooms_btn.Location = new Point(32, 244);
             rooms_btn.Margin = new Padding(3, 2, 3, 2);
             rooms_btn.Name = "rooms_btn";
             rooms_btn.RightToLeft = RightToLeft.Yes;
@@ -221,7 +243,7 @@
             guests_btn.FlatStyle = FlatStyle.Flat;
             guests_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guests_btn.ForeColor = Color.White;
-            guests_btn.Location = new Point(32, 312);
+            guests_btn.Location = new Point(32, 294);
             guests_btn.Margin = new Padding(3, 2, 3, 2);
             guests_btn.Name = "guests_btn";
             guests_btn.Size = new Size(192, 29);
@@ -241,7 +263,7 @@
             addUser_btn.FlatStyle = FlatStyle.Flat;
             addUser_btn.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             addUser_btn.ForeColor = Color.White;
-            addUser_btn.Location = new Point(32, 409);
+            addUser_btn.Location = new Point(38, 420);
             addUser_btn.Margin = new Padding(3, 2, 3, 2);
             addUser_btn.Name = "addUser_btn";
             addUser_btn.Size = new Size(192, 29);
@@ -261,7 +283,7 @@
             Staff.FlatStyle = FlatStyle.Flat;
             Staff.Font = new Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Staff.ForeColor = Color.White;
-            Staff.Location = new Point(32, 218);
+            Staff.Location = new Point(32, 200);
             Staff.Margin = new Padding(3, 2, 3, 2);
             Staff.Name = "Staff";
             Staff.Size = new Size(192, 29);
@@ -277,11 +299,11 @@
             username.FlatStyle = FlatStyle.Flat;
             username.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             username.ForeColor = Color.White;
-            username.Location = new Point(60, 113);
+            username.Location = new Point(83, 114);
             username.Name = "username";
-            username.Size = new Size(90, 18);
+            username.Size = new Size(81, 18);
             username.TabIndex = 2;
-            username.Text = "Welcome, ";
+            username.Text = "Welcome";
             // 
             // pictureBox1
             // 
@@ -578,5 +600,6 @@
         private Panel panel5;
         private Button Booking_btn;
         private Button btnHotel;
+        private Button button1;
     }
 }

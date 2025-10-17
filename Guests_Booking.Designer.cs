@@ -90,10 +90,10 @@
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(panel5);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 32);
+            panel1.Location = new Point(0, 44);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1242, 532);
+            panel1.Size = new Size(1242, 520);
             panel1.TabIndex = 16;
             panel1.Paint += panel1_Paint;
             // 
@@ -136,9 +136,9 @@
             label2.ForeColor = Color.FromArgb(3, 14, 28);
             label2.Location = new Point(21, 10);
             label2.Name = "label2";
-            label2.Size = new Size(140, 18);
+            label2.Size = new Size(158, 18);
             label2.TabIndex = 14;
-            label2.Text = "Available Rooms";
+            label2.Text = "🚪 Available Rooms";
             // 
             // dataGridView1
             // 
@@ -183,7 +183,7 @@
             panel5.Location = new Point(799, 0);
             panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(443, 532);
+            panel5.Size = new Size(443, 520);
             panel5.TabIndex = 3;
             panel5.Paint += panel5_Paint;
             // 
@@ -413,7 +413,7 @@
             booking_printbtn.Name = "booking_printbtn";
             booking_printbtn.Size = new Size(199, 34);
             booking_printbtn.TabIndex = 2;
-            booking_printbtn.Text = "Print";
+            booking_printbtn.Text = "🖨 Print";
             booking_printbtn.UseVisualStyleBackColor = false;
             booking_printbtn.Click += booking_printbtn_Click;
             // 
@@ -462,7 +462,7 @@
             panel6.Location = new Point(0, 0);
             panel6.Margin = new Padding(3, 2, 3, 2);
             panel6.Name = "panel6";
-            panel6.Size = new Size(1242, 32);
+            panel6.Size = new Size(1242, 44);
             panel6.TabIndex = 15;
             // 
             // label7
@@ -480,13 +480,13 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(487, 8);
+            label4.Location = new Point(533, 9);
             label4.Name = "label4";
-            label4.Size = new Size(115, 18);
+            label4.Size = new Size(155, 22);
             label4.TabIndex = 12;
-            label4.Text = "Booking Data";
+            label4.Text = "📋 Booking Data";
             // 
             // Guests_Booking
             // 

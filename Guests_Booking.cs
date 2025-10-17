@@ -118,7 +118,7 @@ namespace HMS
 
                     if (dt.Rows.Count == 0)
                     {
-                        MessageBox.Show("لا توجد غرف متاحة الآن.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("There is no any Available Rooms Now.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }

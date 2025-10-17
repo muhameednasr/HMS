@@ -18,6 +18,7 @@ namespace HMS
             //Application.Run(new admin_addUser());
             //Application.Run(new admin_rooms());
             //Application.Run(new Guests_Booking());
+            //Application.Run(new Booking_view());
             Application.Run(new Login());
 
 
