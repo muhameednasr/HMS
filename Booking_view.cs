@@ -70,13 +70,9 @@ namespace HMS
             // Filter DataTable using LINQ
             var results = _allBookingsTable.AsEnumerable().Where(row =>
                 (row["GuestName"]?.ToString()?.ToLower() ?? "").Contains(keyword) ||
-                (row["RoomNumber"]?.ToString()?.ToLower() ?? "").Contains(keyword) ||
-                (row["BookingID"]?.ToString()?.ToLower() ?? "").Contains(keyword) ||
-                (row["GuestID"]?.ToString()?.ToLower() ?? "").Contains(keyword) ||
-                (row["DaysLeft"]?.ToString() ?? "").Contains(keyword) ||
-                (row["CheckoutDate"]?.ToString() ?? "").Contains(keyword) ||
-                (row["CheckinDate"]?.ToString() ?? "").Contains(keyword) ||
-                (row["TotalPrice"]?.ToString() ?? "").Contains(keyword)
+                (row["RoomNumber"]?.ToString()?.ToLower() ?? "").Contains(keyword)
+
+             
             );
 
             // Display the filtered results
