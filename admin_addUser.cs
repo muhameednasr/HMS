@@ -16,8 +16,7 @@ namespace HMS
         {
             InitializeComponent();
             LoadUsers();
-            LoadHotels();
-            LoadStaff();
+            PopulateComboBoxes();
         }
         // Load Users into DataGridView//
         private void LoadUsers()
@@ -55,64 +54,32 @@ namespace HMS
             adminMain.Show();
             this.Close();
         }
-
-        private void LoadHotels()
+        private void PopulateComboBoxes()
         {
-            try
-            {
-                DataTable dtHotels = DB.Select("Hotel");
-                if (dtHotels.Rows.Count > 0)
-                {
-                    DB.ComboBox(addUser_hotelID, dtHotels, "HotelName", "HotelID");
+            
+            DataTable dtHotels = DB.Select("Hotel");
+            DataTable dtStaff = DB.Select("Staff");
 
-                    addUser_hotelID.SelectedIndex = -1;
-                    
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading hotels: " + ex.Message);
-            }
+            
+            DB.ComboBox(addUser_hotelID, dtHotels, "HotelID", "HotelID");
+
+           
+            DB.ComboBox(addUser_staffID, dtStaff, "StaffID", "StaffID");
+
+            
+            addUser_hotelID.SelectedIndex = -1;
+            addUser_staffID.SelectedIndex = -1;
         }
-        private void LoadStaff()
-        {
-            try
-            {
-                DataTable dtStaff = DB.SelectCol("SELECT StaffID, (FirstName + ' ' + LastName) AS FullName FROM Staff");
-                if (dtStaff.Rows.Count > 0)
-                {
-                    DB.ComboBox(addUser_staffID, dtStaff, "FullName", "StaffID");
-
-                 
-                    addUser_staffID.SelectedIndex = -1;
-                    addUser_staffID.Text = " ";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading staff: " + ex.Message);
-            }
-        }
-
-
         // Add Button Click Event//
         private void addUser_addbtn_Click_1(object sender, EventArgs e)
         {
             string username = addUser_username.Text.Trim();
-            string password = addUser_password.Text.Trim(); 
+            string password = addUser_password.Text.Trim();
             string role = addUser_role.Text;
-            if (!int.TryParse(addUser_hotelID.Text, out int hotelId))
-            {
-                MessageBox.Show("Choose a valid HotelID.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (!int.TryParse(addUser_staffID.Text, out int staffId))
-            {
-                MessageBox.Show("Choose a valid StaffID .", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(role))
+          
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(role) ||
+                !Validator.IsComboBoxSelected(addUser_hotelID) || !Validator.IsComboBoxSelected(addUser_staffID))
             {
                 MessageBox.Show("Fill Requiered Fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -121,23 +88,24 @@ namespace HMS
             try
             {
                 string query = @"INSERT INTO Users (HotelID, StaffID, Username, PasswordHash, Role)
-                         VALUES (@HotelID, @StaffID, @Username, @Password, @Role)";
+                 VALUES (@HotelID, @StaffID, @Username, @Password, @Role)";
 
                 var parameters = new Dictionary<string, object?>
         {
-            {"@HotelID", hotelId},
-            {"@StaffID", staffId},
+            
+            {"@HotelID", addUser_hotelID.SelectedValue},
+            {"@StaffID", addUser_staffID.SelectedValue},
             {"@Username", username},
-            {"@Password", password}, // لاحقًا استبدليها بـ hashed password
+            {"@Password", password},
             {"@Role", role}
         };
 
-                DB.Command(query, parameters); // هذه الدالة موجودة في كلاس DB لديك
+                DB.Command(query, parameters);
 
-                MessageBox.Show("User  added Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("User added Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                LoadUsers();      // تحديث الـ DataGridView لعرض المستخدمين الجدد
-                ClearInputs();    // مسح الحقول (دالة سننشئها بعد قليل)
+                LoadUsers();
+                ClearInputs();
             }
             catch (Exception ex)
             {
@@ -167,8 +135,8 @@ namespace HMS
                 addUser_username.Text = row.Cells["Username"].Value.ToString();
                 //addUser_password.Text = row.Cells["PasswordHash"].Value.ToString();
                 addUser_role.Text = row.Cells["Role"].Value.ToString();
-                addUser_hotelID.Text = row.Cells["HotelID"].Value.ToString();
-                addUser_staffID.Text = row.Cells["StaffID"].Value.ToString();
+                addUser_hotelID.SelectedValue = row.Cells["HotelID"].Value;
+                addUser_staffID.SelectedValue = row.Cells["StaffID"].Value;
             }
         }
 
@@ -194,34 +162,22 @@ namespace HMS
                 string password = addUser_password.Text.Trim();
                 string role = addUser_role.Text;
 
-                if (!int.TryParse(addUser_hotelID.Text, out int hotelId) ||
-                    !int.TryParse(addUser_staffID.Text, out int staffId))
-                {
-                    MessageBox.Show("Check valid in HotelID و StaffID.");
-                    return;
-                }
-                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(role))
+                
+                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(role) ||
+                    !Validator.IsComboBoxSelected(addUser_hotelID) || !Validator.IsComboBoxSelected(addUser_staffID))
                 {
                     MessageBox.Show("Fill Requiered Fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                string query = @"
-            UPDATE Users
-            SET Username = @Username,
-                PasswordHash = @Password,
-                Role = @Role,
-                HotelID = @HotelID,
-                StaffID = @StaffID
-            WHERE UserID = @UserID";
-
+                string query = @" UPDATE Users SET Username = @Username, PasswordHash = @Password, Role = @Role, HotelID = @HotelID, StaffID = @StaffID WHERE UserID = @UserID";
                 var parameters = new Dictionary<string, object?>
         {
             {"@Username", username},
             {"@Password", password},
             {"@Role", role},
-            {"@HotelID", hotelId},
-            {"@StaffID", staffId},
+            {"@HotelID", addUser_hotelID.SelectedValue},
+            {"@StaffID", addUser_staffID.SelectedValue},
             {"@UserID", userId}
         };
 
@@ -233,7 +189,7 @@ namespace HMS
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Something went Error Since Updating: " + ex.Message);
+                MessageBox.Show("Error Updating: " + ex.Message);
             }
         }
 

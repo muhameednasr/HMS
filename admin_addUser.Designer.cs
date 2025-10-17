@@ -284,6 +284,7 @@
             // 
             // dgvUsers
             // 
+            dgvUsers.AllowUserToDeleteRows = false;
             dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(3, 14, 28);
@@ -297,6 +298,7 @@
             dgvUsers.EnableHeadersVisualStyles = false;
             dgvUsers.Location = new Point(28, 17);
             dgvUsers.Name = "dgvUsers";
+            dgvUsers.ReadOnly = true;
             dgvUsers.RowHeadersWidth = 51;
             dgvUsers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvUsers.Size = new Size(879, 515);

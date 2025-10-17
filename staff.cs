@@ -22,6 +22,7 @@ namespace HMS
 
             dgvStaff.CellValueChanged += dgvStaff_CellValueChanged;
             dgvStaff.UserDeletingRow += dgvStaff_UserDeletingRow;
+            dgvStaff.CellValidating += dgvStaff_CellValidating;
         }
 
         private void staff_Load(object sender, EventArgs e)
@@ -71,17 +72,57 @@ namespace HMS
                 MessageBox.Show("Error loading staff data: " + ex.Message);
             }
         }
-
+        private bool ValidateInputs()
+        {
+            if (comboBoxHotel.SelectedValue == null)
+            {
+                MessageBox.Show("Please select a hotel.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!Validator.IsValidName(txtFirstName.Text))
+            {
+                MessageBox.Show("Please enter a valid first name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!Validator.IsValidName(txtLastName.Text))
+            {
+                MessageBox.Show("Please enter a valid last name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!Validator.IsValidName(txtPosition.Text))
+            {
+                MessageBox.Show("Please enter a valid position.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!Validator.IsValidDecimal(txtSalary.Text))
+            {
+                MessageBox.Show("Please enter a valid salary.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!Validator.IsOfAge(dtpBirth.Value))
+            {
+                MessageBox.Show("Staff member must be at least 18 years old.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!Validator.IsValidPhone(txtPhone.Text))
+            {
+                MessageBox.Show("Please enter a valid phone number (at least 10 digits).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!Validator.IsValidEmail(txtEmail.Text))
+            {
+                MessageBox.Show("Please enter a valid email address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                if (comboBoxHotel.SelectedValue == null ||
-                    string.IsNullOrWhiteSpace(txtFirstName.Text) ||
-                    string.IsNullOrWhiteSpace(txtLastName.Text))
+                if (!ValidateInputs())
                 {
-                    MessageBox.Show("Please fill all required fields.");
-                    return;
+                    return; // Stop the process if validation fails
                 }
 
                 DB.Command(
@@ -162,31 +203,60 @@ namespace HMS
 
         private void dgvStaff_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            Validator.HandleCellValueChanged(dgvStaff, e, "Staff", "StaffID");
+        }
+
+        private void dgvStaff_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            string headerText = dgvStaff.Columns[e.ColumnIndex].HeaderText;
+            string value = e.FormattedValue.ToString();
+            bool isValid = true;
+            string errorMessage = "";
+
+            // Skip validation for new rows or if the value hasn't changed
+            if (dgvStaff.Rows[e.RowIndex].IsNewRow || value == dgvStaff.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString())
             {
-                if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
-
-                DataGridViewRow row = dgvStaff.Rows[e.RowIndex];
-                if (row.Cells["StaffID"].Value == null) return;
-
-                int id = Convert.ToInt32(row.Cells["StaffID"].Value);
-                string columnName = dgvStaff.Columns[e.ColumnIndex].Name;
-                object newValue = row.Cells[e.ColumnIndex].Value ?? DBNull.Value;
-
-                if (columnName.Equals("StaffID", StringComparison.OrdinalIgnoreCase)) return;
-
-                string query = $"UPDATE Staff SET {columnName} = @val WHERE StaffID = @id";
-                DB.Command(query, new Dictionary<string, object>
-                {
-                    {"@val", newValue},
-                    {"@id", id}
-                });
-
-                row.DefaultCellStyle.BackColor = Color.LightGreen;
+                return;
             }
-            catch (Exception ex)
+
+            switch (headerText)
             {
-                MessageBox.Show("Error updating value: " + ex.Message);
+                case "First Name":
+                case "Last Name":
+                case "Position":
+                    isValid = Validator.IsValidName(value);
+                    errorMessage = $"Please enter a valid {headerText}.";
+                    break;
+                case "Salary":
+                    isValid = Validator.IsValidDecimal(value);
+                    errorMessage = "Please enter a valid salary.";
+                    break;
+                case "Birth Date":
+                    if (DateTime.TryParse(value, out DateTime dob))
+                    {
+                        isValid = Validator.IsOfAge(dob);
+                        errorMessage = "Staff member must be at least 18 years old.";
+                    }
+                    else
+                    {
+                        isValid = false;
+                        errorMessage = "Please enter a valid date format.";
+                    }
+                    break;
+                case "Phone":
+                    isValid = Validator.IsValidPhone(value);
+                    errorMessage = "Please enter a valid phone number (at least 10 digits).";
+                    break;
+                case "Email":
+                    isValid = Validator.IsValidEmail(value);
+                    errorMessage = "Please enter a valid email address.";
+                    break;
+            }
+
+            if (!isValid)
+            {
+                e.Cancel = true; // Prevents the user from leaving the invalid cell
+                MessageBox.Show(errorMessage, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
