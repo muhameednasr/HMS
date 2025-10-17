@@ -127,7 +127,7 @@ namespace HMS
             {
                 DataGridViewRow row = dgvRooms.Rows[e.RowIndex];
                 rooms_roomID.Text = row.Cells["RoomID"].Value.ToString();
-                rooms_hotelCombo.Text = row.Cells["HotelName"].Value.ToString();
+                rooms_hotelCombo.Text = row.Cells["Name"].Value.ToString();
                 rooms_roomPrice.Text = row.Cells["Price"].Value.ToString();
                 rooms_status.Text = row.Cells["Status"].Value.ToString();
 
@@ -183,7 +183,7 @@ namespace HMS
 
 
             DB.Command(
-    "UPDATE Room SET TypeID = @type, Status = @status WHERE Room = @id",
+    "UPDATE Room SET TypeID = @type, Status = @status WHERE RoomId = @id",
     new Dictionary<string, object>
     {
         {"@type", rooms_type.SelectedValue},
@@ -192,7 +192,17 @@ namespace HMS
     }
 );
 
+           if (rooms_status.Text.Trim().Equals("Available", StringComparison.OrdinalIgnoreCase))  
+            {
+                DB.Command(
+                "DELETE FROM Booking WHERE RoomNumber = @roomId",
+                new Dictionary<string, object>
+                {
+                {"@roomId", int.Parse(rooms_roomID.Text)}
+                }
+            );
 
+            }
             MessageBox.Show("Room updated Successfully");
             LoadRoomData();
             ClearForm();
@@ -210,7 +220,7 @@ namespace HMS
             {
                 DB.Command
                     (
-                        "DELETE FROM Room WHERE Room = @id",
+                        "DELETE FROM Room WHERE RoomId = @id",
     new Dictionary<string, object>
     {
         {"@id", int.Parse(rooms_roomID.Text)}

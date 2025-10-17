@@ -62,8 +62,9 @@
             panel4.Controls.Add(label4);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
+            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1282, 49);
+            panel4.Size = new Size(1122, 37);
             panel4.TabIndex = 13;
             // 
             // label7
@@ -71,9 +72,9 @@
             label7.AutoSize = true;
             label7.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(1241, 10);
+            label7.Location = new Point(1086, 8);
             label7.Name = "label7";
-            label7.Size = new Size(22, 23);
+            label7.Size = new Size(18, 18);
             label7.TabIndex = 13;
             label7.Text = "X";
             label7.Click += label7_Click;
@@ -83,9 +84,9 @@
             label4.AutoSize = true;
             label4.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(536, 14);
+            label4.Location = new Point(469, 10);
             label4.Name = "label4";
-            label4.Size = new Size(133, 23);
+            label4.Size = new Size(109, 18);
             label4.TabIndex = 12;
             label4.Text = "Room's Data";
             // 
@@ -95,11 +96,11 @@
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(dgvRooms);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 49);
+            panel1.Location = new Point(0, 37);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1282, 689);
+            panel1.Size = new Size(1122, 517);
             panel1.TabIndex = 14;
-            //panel1.Paint += panel1_Paint_1;
             // 
             // panel2
             // 
@@ -118,18 +119,20 @@
             panel2.Controls.Add(rooms_roomID);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label1);
-            panel2.Location = new Point(21, 392);
+            panel2.Location = new Point(18, 294);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1238, 291);
+            panel2.Size = new Size(1083, 218);
             panel2.TabIndex = 13;
             // 
             // rooms_hotelCombo
             // 
             rooms_hotelCombo.FormattingEnabled = true;
             rooms_hotelCombo.Items.AddRange(new object[] { "Nile View", "Grand Hotel" });
-            rooms_hotelCombo.Location = new Point(163, 165);
+            rooms_hotelCombo.Location = new Point(143, 124);
+            rooms_hotelCombo.Margin = new Padding(3, 2, 3, 2);
             rooms_hotelCombo.Name = "rooms_hotelCombo";
-            rooms_hotelCombo.Size = new Size(263, 28);
+            rooms_hotelCombo.Size = new Size(231, 23);
             rooms_hotelCombo.TabIndex = 22;
             // 
             // rooms_clearBtn
@@ -139,9 +142,10 @@
             rooms_clearBtn.FlatStyle = FlatStyle.Flat;
             rooms_clearBtn.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rooms_clearBtn.ForeColor = Color.White;
-            rooms_clearBtn.Location = new Point(1055, 225);
+            rooms_clearBtn.Location = new Point(923, 169);
+            rooms_clearBtn.Margin = new Padding(3, 2, 3, 2);
             rooms_clearBtn.Name = "rooms_clearBtn";
-            rooms_clearBtn.Size = new Size(144, 41);
+            rooms_clearBtn.Size = new Size(126, 31);
             rooms_clearBtn.TabIndex = 21;
             rooms_clearBtn.Text = "Clear";
             rooms_clearBtn.UseVisualStyleBackColor = false;
@@ -154,9 +158,10 @@
             rooms_deleteBtn.FlatStyle = FlatStyle.Flat;
             rooms_deleteBtn.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rooms_deleteBtn.ForeColor = Color.White;
-            rooms_deleteBtn.Location = new Point(731, 225);
+            rooms_deleteBtn.Location = new Point(640, 169);
+            rooms_deleteBtn.Margin = new Padding(3, 2, 3, 2);
             rooms_deleteBtn.Name = "rooms_deleteBtn";
-            rooms_deleteBtn.Size = new Size(144, 41);
+            rooms_deleteBtn.Size = new Size(126, 31);
             rooms_deleteBtn.TabIndex = 20;
             rooms_deleteBtn.Text = "Delete";
             rooms_deleteBtn.UseVisualStyleBackColor = false;
@@ -169,9 +174,10 @@
             rooms_updateBtn.FlatStyle = FlatStyle.Flat;
             rooms_updateBtn.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rooms_updateBtn.ForeColor = Color.White;
-            rooms_updateBtn.Location = new Point(428, 225);
+            rooms_updateBtn.Location = new Point(374, 169);
+            rooms_updateBtn.Margin = new Padding(3, 2, 3, 2);
             rooms_updateBtn.Name = "rooms_updateBtn";
-            rooms_updateBtn.Size = new Size(144, 41);
+            rooms_updateBtn.Size = new Size(126, 31);
             rooms_updateBtn.TabIndex = 19;
             rooms_updateBtn.Text = "Update";
             rooms_updateBtn.UseVisualStyleBackColor = false;
@@ -184,9 +190,10 @@
             rooms_addBtn.FlatStyle = FlatStyle.Flat;
             rooms_addBtn.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rooms_addBtn.ForeColor = Color.White;
-            rooms_addBtn.Location = new Point(131, 225);
+            rooms_addBtn.Location = new Point(115, 169);
+            rooms_addBtn.Margin = new Padding(3, 2, 3, 2);
             rooms_addBtn.Name = "rooms_addBtn";
-            rooms_addBtn.Size = new Size(144, 41);
+            rooms_addBtn.Size = new Size(126, 31);
             rooms_addBtn.TabIndex = 18;
             rooms_addBtn.Text = "Add";
             rooms_addBtn.UseVisualStyleBackColor = false;
@@ -195,19 +202,20 @@
             // rooms_status
             // 
             rooms_status.FormattingEnabled = true;
-            rooms_status.Items.AddRange(new object[] { "available", "Booked" });
-            rooms_status.Location = new Point(614, 99);
+            rooms_status.Items.AddRange(new object[] { "available", "Occupied" });
+            rooms_status.Location = new Point(537, 74);
+            rooms_status.Margin = new Padding(3, 2, 3, 2);
             rooms_status.Name = "rooms_status";
-            rooms_status.Size = new Size(263, 28);
+            rooms_status.Size = new Size(231, 23);
             rooms_status.TabIndex = 15;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(529, 107);
+            label6.Location = new Point(463, 80);
             label6.Name = "label6";
-            label6.Size = new Size(66, 20);
+            label6.Size = new Size(54, 16);
             label6.TabIndex = 14;
             label6.Text = "Status:";
             // 
@@ -215,9 +223,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(529, 33);
+            label5.Location = new Point(463, 25);
             label5.Name = "label5";
-            label5.Size = new Size(57, 20);
+            label5.Size = new Size(46, 16);
             label5.TabIndex = 12;
             label5.Text = "Price:";
             // 
@@ -225,9 +233,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(54, 168);
+            label3.Location = new Point(47, 126);
             label3.Name = "label3";
-            label3.Size = new Size(80, 20);
+            label3.Size = new Size(65, 16);
             label3.TabIndex = 11;
             label3.Text = "Hotel ID:";
             // 
@@ -235,32 +243,35 @@
             // 
             rooms_type.FormattingEnabled = true;
             rooms_type.Items.AddRange(new object[] { "Single Room", "Double Room", "Suite Room" });
-            rooms_type.Location = new Point(163, 104);
+            rooms_type.Location = new Point(143, 78);
+            rooms_type.Margin = new Padding(3, 2, 3, 2);
             rooms_type.Name = "rooms_type";
-            rooms_type.Size = new Size(263, 28);
+            rooms_type.Size = new Size(231, 23);
             rooms_type.TabIndex = 10;
             // 
             // rooms_roomPrice
             // 
-            rooms_roomPrice.Location = new Point(614, 29);
+            rooms_roomPrice.Location = new Point(537, 22);
+            rooms_roomPrice.Margin = new Padding(3, 2, 3, 2);
             rooms_roomPrice.Name = "rooms_roomPrice";
-            rooms_roomPrice.Size = new Size(282, 27);
+            rooms_roomPrice.Size = new Size(247, 23);
             rooms_roomPrice.TabIndex = 9;
             // 
             // rooms_roomID
             // 
-            rooms_roomID.Location = new Point(163, 26);
+            rooms_roomID.Location = new Point(143, 20);
+            rooms_roomID.Margin = new Padding(3, 2, 3, 2);
             rooms_roomID.Name = "rooms_roomID";
-            rooms_roomID.Size = new Size(263, 27);
+            rooms_roomID.Size = new Size(231, 23);
             rooms_roomID.TabIndex = 8;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(79, 107);
+            label2.Location = new Point(69, 80);
             label2.Name = "label2";
-            label2.Size = new Size(55, 20);
+            label2.Size = new Size(45, 16);
             label2.TabIndex = 7;
             label2.Text = "Type:";
             // 
@@ -268,9 +279,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(51, 29);
+            label1.Location = new Point(45, 22);
             label1.Name = "label1";
-            label1.Size = new Size(83, 20);
+            label1.Size = new Size(67, 16);
             label1.TabIndex = 6;
             label1.Text = "Room ID:";
             // 
@@ -287,22 +298,24 @@
             dgvRooms.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvRooms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRooms.EnableHeadersVisualStyles = false;
-            dgvRooms.Location = new Point(25, 23);
+            dgvRooms.Location = new Point(22, 17);
+            dgvRooms.Margin = new Padding(3, 2, 3, 2);
             dgvRooms.Name = "dgvRooms";
             dgvRooms.RowHeadersWidth = 51;
             dgvRooms.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dgvRooms.Size = new Size(1234, 350);
+            dgvRooms.Size = new Size(1080, 262);
             dgvRooms.TabIndex = 1;
             dgvRooms.CellContentClick += dgvRooms_CellContentClick_1;
             // 
             // admin_rooms
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1282, 738);
+            ClientSize = new Size(1122, 554);
             Controls.Add(panel1);
             Controls.Add(panel4);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "admin_rooms";
             Text = "admin_rooms";
             Load += admin_rooms_Load;
