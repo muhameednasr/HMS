@@ -15,17 +15,24 @@ namespace HMS
         {
             InitializeComponent();
             SetupDataGridView();
-            // Hook DGV events (Designer may also hook some — safe to add)
+            // dgv events 
             dgv.CellClick += dgv_CellClick;
             dgv.MouseDown += dgv_MouseDown;
             dgv.SelectionChanged += dgv_SelectionChanged;
 
-            // Validation handlers
-            txtFirstName.TextChanged += ValidateFirstName;
-            txtLastName.TextChanged += ValidateLastName;
-            txtEmail.TextChanged += ValidateEmail;
-            txtPhone.TextChanged += ValidatePhone;
-          
+            // Validation handlers now use the static Validator class
+            txtFirstName.TextChanged +=
+                (s, e) => Validator.UpdateValidationLabel
+                (fnameInvalid, Validator.IsValidName(txtFirstName.Text), "Invalid First Name");
+            txtLastName.TextChanged +=
+                (s, e) => Validator.UpdateValidationLabel
+                (LnameInvalid, Validator.IsValidName(txtLastName.Text), "Invalid Last Name");
+            txtEmail.TextChanged += 
+                (s, e) => Validator.UpdateValidationLabel
+                (emailInvalid, Validator.IsValidEmail(txtEmail.Text), "Invalid email");
+            txtPhone.TextChanged +=
+                (s, e) => Validator.UpdateValidationLabel
+                (phoneInvalid, Validator.IsValidPhone(txtPhone.Text), "Phone must be at least 11 digits");
         }
 
         // ---------------------- Load ----------------------
@@ -123,7 +130,7 @@ namespace HMS
             txtSearch.Clear();
         }
 
-       // ---------------------- Clear ----------------------
+        // ---------------------- Clear ----------------------
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearInputs();
@@ -149,7 +156,7 @@ namespace HMS
         // ---------------------- CRUD ----------------------
         private void Add_Click(object? sender, EventArgs e)
         {
-            if (!ValidateInputs()) return;
+            if (!ValidateAllInputs()) return;
 
             DB.Command(
                 "INSERT INTO Guest (FirstName, LastName, DateOfBirth, Address, Phone, Email) " +
@@ -176,7 +183,7 @@ namespace HMS
                 MessageBox.Show("Please select a guest to update.");
                 return;
             }
-            if (!ValidateInputs()) return;
+            if (!ValidateAllInputs()) return;
 
             DB.Command(
                 "UPDATE Guest SET FirstName=@f, LastName=@l, DateOfBirth=@d, Address=@a, Phone=@p, Email=@e WHERE GuestID=@id",
@@ -239,80 +246,35 @@ namespace HMS
             if (DateTime.TryParse(row.Cells["DateOfBirth"].Value?.ToString(), out DateTime dob))
                 dtpDateOfBirth.Value = dob;
         }
+
         // ---------------------- Validation ----------------------
-        private void ValidateFirstName(object? sender, EventArgs e)
+        private bool ValidateAllInputs()
         {
-            fnameInvalid.Visible = string.IsNullOrWhiteSpace(txtFirstName.Text) ||
-                                     !Regex.IsMatch(txtFirstName.Text, @"^[\p{L}\s'-]+$") ||
-                                     txtFirstName.Text.Length > 50;
-            fnameInvalid.Text = fnameInvalid.Visible ? "Invalid First Name" : "";
-        }
-
-        private void ValidateLastName(object? sender, EventArgs e)
-        {
-            LnameInvalid.Visible = string.IsNullOrWhiteSpace(txtLastName.Text) ||
-                                     !Regex.IsMatch(txtLastName.Text, @"^[\p{L}\s'-]+$") ||
-                                     txtLastName.Text.Length > 50;
-            LnameInvalid.Text = LnameInvalid.Visible ? "Invalid Last Name" : "";
-        }
-
-        private void ValidateEmail(object? sender, EventArgs e)
-        {
-            string email = txtEmail.Text.Trim();
-            bool isValid = Regex.IsMatch(
-                email,
-                @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
-            )
-            && !email.Contains("..")
-            && email.Count(c => c == '@') == 1;
-
-            emailInvalid.Visible = !isValid;
-            emailInvalid.Text = !isValid ? "Invalid email" : "";
-        }
-
-
-        private void ValidatePhone(object? sender, EventArgs e)
-        {
-            string phoneDigits = new string(txtPhone.Text.Where(char.IsDigit).ToArray());
-            phoneInvalid.Visible = phoneDigits.Length < 11;
-            phoneInvalid.Text = phoneInvalid.Visible ? "Phone must be at least 11 digits" : "";
-        }
-
-        private void ValidateAge(object? sender, EventArgs e)
-        {
-            if (CalculateAge(dtpDateOfBirth.Value) < 18)
-            {
-                MessageBox.Show("Guest must be at least 18 years old.", "Validation Error");
-            }
-        }
-
-        private int CalculateAge(DateTime birthDate)
-        {
-            int age = DateTime.Today.Year - birthDate.Year;
-            if (birthDate > DateTime.Today.AddYears(-age)) age--;
-            return age;
-        }
-
-        private bool ValidateInputs()
-        {
+            // Check for empty required fields
             if (string.IsNullOrWhiteSpace(txtFirstName.Text) ||
                 string.IsNullOrWhiteSpace(txtLastName.Text) ||
                 string.IsNullOrWhiteSpace(txtAddress.Text) ||
                 string.IsNullOrWhiteSpace(txtEmail.Text) ||
                 string.IsNullOrWhiteSpace(txtPhone.Text))
             {
-                MessageBox.Show("All fields are required.", "Input Error");
-                return false;
-            }
-            if (CalculateAge(dtpDateOfBirth.Value) < 18)
-            {
-                MessageBox.Show("Guest must be at least 18 years old.", "Validation Error");
+                MessageBox.Show("All fields are required.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
-            if (fnameInvalid.Visible || LnameInvalid.Visible || emailInvalid.Visible || phoneInvalid.Visible)
+            // Check individual field formats using the Validator class
+            if (!Validator.IsValidName(txtFirstName.Text) ||
+                !Validator.IsValidName(txtLastName.Text) ||
+                !Validator.IsValidEmail(txtEmail.Text) ||
+                !Validator.IsValidPhone(txtPhone.Text))
             {
-                MessageBox.Show("Validation Error.", "Validation Error");
+                MessageBox.Show("Please correct the highlighted fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Check age constraint
+            if (!Validator.IsOfAge(dtpDateOfBirth.Value))
+            {
+                MessageBox.Show("Guest must be at least 18 years old.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
