@@ -55,7 +55,7 @@ namespace HMS
 
             if (dt.Rows.Count == 0)
             {
-                MessageBox.Show("there is no emails found");
+                MessageBox.Show("there is no users found");
                 return;
             }
 
