@@ -194,7 +194,7 @@
             // 
             // logout_btn
             // 
-            logout_btn.BackColor = Color.FromArgb(52, 110, 138);
+            logout_btn.BackColor = Color.Brown;
             logout_btn.Cursor = Cursors.Hand;
             logout_btn.FlatAppearance.BorderSize = 0;
             logout_btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(3, 14, 28);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HMS
 {
@@ -162,16 +163,37 @@ namespace HMS
             }
         }
 
+        int selectedHotel = 0;
         private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) {
+            if (e.RowIndex >= 0)
+            {
                 var row = dgv.Rows[e.RowIndex];
+                selectedHotel = int.Parse(row.Cells["HotelId"].Value.ToString());
                 txtHotel.Text = row.Cells["Name"].Value.ToString();
                 txtAdress.Text = row.Cells["Address"].Value.ToString();
                 txtEmail.Text = row.Cells["Email"].Value.ToString();
                 txtPhone.Text = row.Cells["Phone"].Value.ToString();
                 txtStars.Text = row.Cells["Stars"].Value.ToString();
             }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            DB.Command(
+               "UPDATE Hotel SET Name=@name,Address=@address, Email=@email,Phone=@phone,Stars=@stars WHERE HotelId=@id",
+               new Dictionary<string, object>
+               {
+                   {"@id",selectedHotel },
+            {"@name", txtHotel.Text},
+            {"@address", txtAdress.Text},
+            {"@email", txtEmail.Text},
+            {"@phone", txtPhone.Text},
+            {"@stars", txtStars.Text},
+               }
+           );
+            MessageBox.Show("hotel Updated Successfully");
+            DB.Load("Hotel", dgv);
         }
     }
 }

@@ -30,7 +30,9 @@ namespace HMS
             try
             {
                 DataTable dtHotels = DB.Select("Hotel");
+                DataTable dtStaff = DB.SelectCol("select distinct Position from Staff ");
                 DB.ComboBox(comboBoxHotel, dtHotels, "Name", "HotelID");
+                DB.ComboBox(comboPosition, dtStaff, "Position", "Position");
                 LoadStaff();
             }
             catch (Exception ex)
@@ -89,7 +91,7 @@ namespace HMS
                 MessageBox.Show("Please enter a valid last name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (!Validator.IsValidName(txtPosition.Text))
+            if (!Validator.IsValidName(comboPosition.ValueMember.ToString()))
             {
                 MessageBox.Show("Please enter a valid position.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -133,7 +135,7 @@ namespace HMS
                         {"@hid", Convert.ToInt32(comboBoxHotel.SelectedValue)},
                         {"@fn", txtFirstName.Text},
                         {"@ln", txtLastName.Text},
-                        {"@pos", txtPosition.Text},
+                        {"@pos", comboPosition.ValueMember.ToString()},
                         {"@sal", Convert.ToDecimal(txtSalary.Text)},
                         {"@dob", dtpBirth.Value},
                         {"@ph", txtPhone.Text},
@@ -269,7 +271,6 @@ namespace HMS
         {
             txtFirstName.Clear();
             txtLastName.Clear();
-            txtPosition.Clear();
             txtSalary.Clear();
             txtPhone.Clear();
             txtEmail.Clear();

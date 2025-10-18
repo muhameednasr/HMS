@@ -52,6 +52,7 @@
             txtAdress = new TextBox();
             label2 = new Label();
             txtHotel = new TextBox();
+            btnUpdate = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             panel2.SuspendLayout();
@@ -161,6 +162,7 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(btnUpdate);
             panel3.Controls.Add(btnDelete);
             panel3.Controls.Add(label1);
             panel3.Controls.Add(label5);
@@ -182,15 +184,15 @@
             // 
             // btnDelete
             // 
-            btnDelete.BackColor = Color.FromArgb(3, 14, 28);
+            btnDelete.BackColor = Color.FromArgb(192, 0, 0);
             btnDelete.FlatAppearance.BorderSize = 0;
             btnDelete.FlatAppearance.MouseDownBackColor = Color.FromArgb(52, 110, 138);
             btnDelete.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 110, 138);
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(73, 412);
+            btnDelete.Location = new Point(166, 412);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(186, 30);
+            btnDelete.Size = new Size(117, 30);
             btnDelete.TabIndex = 24;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
@@ -220,9 +222,9 @@
             btnAdd.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 110, 138);
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.ForeColor = Color.White;
-            btnAdd.Location = new Point(73, 376);
+            btnAdd.Location = new Point(47, 376);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(186, 30);
+            btnAdd.Size = new Size(236, 30);
             btnAdd.TabIndex = 13;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = false;
@@ -286,6 +288,22 @@
             txtHotel.Size = new Size(186, 23);
             txtHotel.TabIndex = 17;
             // 
+            // btnUpdate
+            // 
+            btnUpdate.BackColor = Color.Blue;
+            btnUpdate.FlatAppearance.BorderSize = 0;
+            btnUpdate.FlatAppearance.MouseDownBackColor = Color.FromArgb(52, 110, 138);
+            btnUpdate.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 110, 138);
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnUpdate.ForeColor = Color.White;
+            btnUpdate.Location = new Point(47, 412);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(113, 30);
+            btnUpdate.TabIndex = 25;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
             // Hotel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -330,5 +348,6 @@
         private TextBox txtHotel;
         private Label label7;
         private Button btnDelete;
+        private Button btnUpdate;
     }
 }
