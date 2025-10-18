@@ -38,7 +38,7 @@ namespace HMS
                 MessageBox.Show("Please enter a valid email address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (!Validator.IsValidDecimal(txtStars.Text)) 
+            if (!Validator.IsValidDecimal(txtStars.Text))
             {
                 MessageBox.Show("Please enter a valid number for stars.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -162,5 +162,16 @@ namespace HMS
             }
         }
 
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) {
+                var row = dgv.Rows[e.RowIndex];
+                txtHotel.Text = row.Cells["Name"].Value.ToString();
+                txtAdress.Text = row.Cells["Address"].Value.ToString();
+                txtEmail.Text = row.Cells["Email"].Value.ToString();
+                txtPhone.Text = row.Cells["Phone"].Value.ToString();
+                txtStars.Text = row.Cells["Stars"].Value.ToString();
+            }
+        }
     }
 }

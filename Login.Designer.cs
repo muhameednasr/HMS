@@ -140,6 +140,7 @@
             // login_btn
             // 
             login_btn.BackColor = Color.FromArgb(3, 14, 28);
+            login_btn.Cursor = Cursors.Hand;
             login_btn.FlatAppearance.BorderSize = 0;
             login_btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(52, 110, 138);
             login_btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 110, 138);

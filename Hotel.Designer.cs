@@ -40,6 +40,7 @@
             Stars = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
             panel3 = new Panel();
+            btnDelete = new Button();
             label1 = new Label();
             label5 = new Label();
             btnAdd = new Button();
@@ -51,7 +52,6 @@
             txtAdress = new TextBox();
             label2 = new Label();
             txtHotel = new TextBox();
-            btnDelete = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             panel2.SuspendLayout();
@@ -65,8 +65,9 @@
             panel1.Controls.Add(label6);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1207, 55);
+            panel1.Size = new Size(1056, 41);
             panel1.TabIndex = 13;
             // 
             // label7
@@ -74,9 +75,9 @@
             label7.AutoSize = true;
             label7.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(1173, 13);
+            label7.Location = new Point(1026, 10);
             label7.Name = "label7";
-            label7.Size = new Size(22, 23);
+            label7.Size = new Size(18, 18);
             label7.TabIndex = 14;
             label7.Text = "X";
             label7.Click += label7_Click;
@@ -86,9 +87,9 @@
             label6.AutoSize = true;
             label6.Font = new Font("Arial Rounded MT Bold", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(406, 13);
+            label6.Location = new Point(355, 10);
             label6.Name = "label6";
-            label6.Size = new Size(249, 32);
+            label6.Size = new Size(197, 26);
             label6.TabIndex = 13;
             label6.Text = "🏨 System Hotels";
             // 
@@ -97,12 +98,12 @@
             dgv.BackgroundColor = Color.FromArgb(52, 110, 138);
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv.Columns.AddRange(new DataGridViewColumn[] { HotelId, Name, Address, Phone, Email, Stars });
-            dgv.Location = new Point(27, 49);
-            dgv.Margin = new Padding(3, 4, 3, 4);
+            dgv.Location = new Point(24, 37);
             dgv.Name = "dgv";
             dgv.RowHeadersWidth = 51;
-            dgv.Size = new Size(803, 529);
+            dgv.Size = new Size(703, 397);
             dgv.TabIndex = 1;
+            dgv.CellClick += dgv_CellClick;
             // 
             // HotelId
             // 
@@ -152,9 +153,10 @@
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(dgv);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 55);
+            panel2.Location = new Point(0, 41);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1207, 597);
+            panel2.Size = new Size(1056, 448);
             panel2.TabIndex = 14;
             // 
             // panel3
@@ -172,24 +174,41 @@
             panel3.Controls.Add(label2);
             panel3.Controls.Add(txtHotel);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(852, 0);
+            panel3.Location = new Point(745, 0);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(355, 597);
+            panel3.Size = new Size(311, 448);
             panel3.TabIndex = 24;
+            // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.FromArgb(3, 14, 28);
+            btnDelete.FlatAppearance.BorderSize = 0;
+            btnDelete.FlatAppearance.MouseDownBackColor = Color.FromArgb(52, 110, 138);
+            btnDelete.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 110, 138);
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.ForeColor = Color.White;
+            btnDelete.Location = new Point(73, 412);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(186, 30);
+            btnDelete.TabIndex = 24;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // label1
             // 
-            label1.Location = new Point(83, 64);
+            label1.Location = new Point(73, 48);
             label1.Name = "label1";
-            label1.Size = new Size(213, 31);
+            label1.Size = new Size(186, 23);
             label1.TabIndex = 18;
             label1.Text = "Hotel";
             // 
             // label5
             // 
-            label5.Location = new Point(83, 243);
+            label5.Location = new Point(73, 182);
             label5.Name = "label5";
-            label5.Size = new Size(213, 31);
+            label5.Size = new Size(186, 23);
             label5.TabIndex = 23;
             label5.Text = "Phone";
             // 
@@ -201,104 +220,80 @@
             btnAdd.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 110, 138);
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.ForeColor = Color.White;
-            btnAdd.Location = new Point(83, 501);
-            btnAdd.Margin = new Padding(3, 4, 3, 4);
+            btnAdd.Location = new Point(73, 376);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(213, 40);
+            btnAdd.Size = new Size(186, 30);
             btnAdd.TabIndex = 13;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = false;
             // 
             // txtPhone
             // 
-            txtPhone.Location = new Point(83, 277);
-            txtPhone.Margin = new Padding(3, 4, 3, 4);
+            txtPhone.Location = new Point(73, 208);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(212, 27);
+            txtPhone.Size = new Size(186, 23);
             txtPhone.TabIndex = 22;
             // 
             // txtStars
             // 
-            txtStars.Location = new Point(83, 440);
-            txtStars.Margin = new Padding(3, 4, 3, 4);
+            txtStars.Location = new Point(73, 330);
             txtStars.Name = "txtStars";
-            txtStars.Size = new Size(212, 27);
+            txtStars.Size = new Size(186, 23);
             txtStars.TabIndex = 14;
             // 
             // label4
             // 
-            label4.Location = new Point(83, 405);
+            label4.Location = new Point(73, 304);
             label4.Name = "label4";
-            label4.Size = new Size(213, 31);
+            label4.Size = new Size(186, 23);
             label4.TabIndex = 21;
             label4.Text = "Stars";
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(83, 357);
-            txtEmail.Margin = new Padding(3, 4, 3, 4);
+            txtEmail.Location = new Point(73, 268);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(212, 27);
+            txtEmail.Size = new Size(186, 23);
             txtEmail.TabIndex = 15;
             // 
             // label3
             // 
-            label3.Location = new Point(83, 323);
+            label3.Location = new Point(73, 242);
             label3.Name = "label3";
-            label3.Size = new Size(213, 31);
+            label3.Size = new Size(186, 23);
             label3.TabIndex = 20;
             label3.Text = "Email";
             // 
             // txtAdress
             // 
-            txtAdress.Location = new Point(83, 188);
-            txtAdress.Margin = new Padding(3, 4, 3, 4);
+            txtAdress.Location = new Point(73, 141);
             txtAdress.Name = "txtAdress";
-            txtAdress.Size = new Size(212, 27);
+            txtAdress.Size = new Size(186, 23);
             txtAdress.TabIndex = 16;
             // 
             // label2
             // 
-            label2.Location = new Point(83, 153);
+            label2.Location = new Point(73, 115);
             label2.Name = "label2";
-            label2.Size = new Size(213, 31);
+            label2.Size = new Size(186, 23);
             label2.TabIndex = 19;
             label2.Text = "Address";
             // 
             // txtHotel
             // 
-            txtHotel.Location = new Point(83, 99);
-            txtHotel.Margin = new Padding(3, 4, 3, 4);
+            txtHotel.Location = new Point(73, 74);
             txtHotel.Name = "txtHotel";
-            txtHotel.Size = new Size(212, 27);
+            txtHotel.Size = new Size(186, 23);
             txtHotel.TabIndex = 17;
-            // 
-            // btnDelete
-            // 
-            btnDelete.BackColor = Color.FromArgb(3, 14, 28);
-            btnDelete.FlatAppearance.BorderSize = 0;
-            btnDelete.FlatAppearance.MouseDownBackColor = Color.FromArgb(52, 110, 138);
-            btnDelete.FlatAppearance.MouseOverBackColor = Color.FromArgb(52, 110, 138);
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(83, 549);
-            btnDelete.Margin = new Padding(3, 4, 3, 4);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(213, 40);
-            btnDelete.TabIndex = 24;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
             // 
             // Hotel
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1207, 652);
+            ClientSize = new Size(1056, 489);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel1.ResumeLayout(false);
